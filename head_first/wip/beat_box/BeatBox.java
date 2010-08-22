@@ -62,6 +62,10 @@ public class BeatBox {
         restoreBtn.addActionListener(new MyRestoreBtnListener());
         buttonBox.add(restoreBtn);
 
+        JButton clearBtn = new JButton("clear");
+        clearBtn.addActionListener(new MyClearBtnListener());
+        buttonBox.add(clearBtn);
+
         Box nameBox = new Box(BoxLayout.Y_AXIS);
         for (int i = 0; i < 16; i++) {
            nameBox.add(new Label(instrumentNames[i]));
@@ -204,6 +208,13 @@ public class BeatBox {
 
             sequencer.stop();
             buildTrackAndStart();
+        }
+    }
+
+    public class MyClearBtnListener implements ActionListener {
+        public void actionPerformed(ActionEvent a) {
+            sequencer.stop();
+            buildGUI();
         }
     }
 
