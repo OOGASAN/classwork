@@ -62,6 +62,10 @@ public class BeatBox {
         restoreBtn.addActionListener(new MyRestoreBtnListener());
         buttonBox.add(restoreBtn);
 
+        JButton scrambleBtn = new JButton("scramble");
+        scrambleBtn.addActionListener(new MyScrambleBtnListener());
+        buttonBox.add(scrambleBtn);        
+
         JButton clearBtn = new JButton("clear");
         clearBtn.addActionListener(new MyClearBtnListener());
         buttonBox.add(clearBtn);
@@ -215,6 +219,29 @@ public class BeatBox {
         public void actionPerformed(ActionEvent a) {
             sequencer.stop();
             buildGUI();
+        }
+    }
+
+    public class MyScrambleBtnListener implements ActionListener {
+        /* (non-Javadoc)
+         * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+         */
+        public void actionPerformed(ActionEvent a) {
+            boolean[][] trackStates = new boolean[16][16];
+            // 0 - 256
+            int k = 0;
+            for (int i = 0; i < 16; i++) {
+                for (int j = 0; j < 16; j++) {
+                    JCheckBox check = (JCheckBox) checkboxList.get(k);
+                    if (check.isSelected()) {
+                        trackStates[i][j] = true;
+                    } else {
+                        trackStates[i][j] = false;
+                    }
+                    k++;
+                }
+            }
+            System.out.print("got here");
         }
     }
 
