@@ -226,25 +226,48 @@ public class BeatBox {
         }
     }
 
+    // not actually a getter!
+    private boolean[][] getTrackStates() {
+        boolean[][] array = new boolean[16][16];
+        int k = 0;
+        for (int i = 0; i < 16; i++) {
+            for (int j = 0; j < 16; j++) {
+                JCheckBox check = (JCheckBox) checkboxList.get(k);
+                if (check.isSelected()) {
+                    array[i][j] = true;
+                } else {
+                    array[i][j] = false;
+                }
+                k++;
+            }
+        }
+
+        return array;
+    }
+
+    private void setupTrackStates(boolean array[][]) {
+        int k = 0;
+        for (int i = 0; i < 16; i++) {
+            for (int j = 0; j < 16; j++) {
+                JCheckBox check = (JCheckBox) checkboxList.get(k);
+                if (array[i][j]) {
+                    check.setSelected(true);
+                } else {
+                    check.setSelected(false);
+                }
+                k++;
+            }
+        }     
+    }
+
     public class MyScrambleBtnListener implements ActionListener {
         public void actionPerformed(ActionEvent a) {
-            boolean[][] trackStates = new boolean[16][16];
-            // get the current state of all checkboxes
-            // 0 - 256
-            int k = 0;
-            for (int i = 0; i < 16; i++) {
-                for (int j = 0; j < 16; j++) {
-                    JCheckBox check = (JCheckBox) checkboxList.get(k);
-                    if (check.isSelected()) {
-                        trackStates[i][j] = true;
-                    } else {
-                        trackStates[i][j] = false;
-                    }
-                    k++;
-                }
-            }
+            boolean[][] trackStates;
+            trackStates = getTrackStates();
             clear();
+
             // scramble function here
+            // for each track
             for (int i = 0; i < 16; i++) {
                 int numChecks = 0;
                 // get count of number of beats in a track and clear track
@@ -255,8 +278,9 @@ public class BeatBox {
                     }
                 }
                 System.out.println("Track " + i + " " + numChecks);
+                // for each beat in track
                 for (int j = 0; j < 16; j++) {
-                    // generate numChecks random numbers between 0 and 15
+                    // generate [numChecks] random numbers between 0 and 15
                     ArrayList<Integer> newBeats = new ArrayList<Integer>();
                     for (int x = 0; x < numChecks; x++) {
                         int randNum = (int) (Math.random() * 15);
@@ -272,18 +296,7 @@ public class BeatBox {
             }
 
             // set checkboxes
-            k = 0;
-            for (int i = 0; i < 16; i++) {
-                for (int j = 0; j < 16; j++) {
-                    JCheckBox check = (JCheckBox) checkboxList.get(k);
-                    if (trackStates[i][j]) {
-                        check.setSelected(true);
-                    } else {
-                        check.setSelected(false);
-                    }
-                    k++;
-                }
-            }          
+            setupTrackStates(trackStates);     
             
             sequencer.stop();
             buildTrackAndStart();
