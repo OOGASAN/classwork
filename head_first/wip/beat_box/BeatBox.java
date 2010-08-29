@@ -277,21 +277,23 @@ public class BeatBox {
                         trackStates[i][j] = false;
                     }
                 }
-                System.out.println("Track " + i + " " + numChecks);
+//                System.out.println("Init Num Checks: Track " + i + " " + numChecks);
                 // for each beat in track
-                for (int j = 0; j < 16; j++) {
-                    // generate [numChecks] random numbers between 0 and 15
-                    ArrayList<Integer> newBeats = new ArrayList<Integer>();
-                    for (int x = 0; x < numChecks; x++) {
-                        int randNum = (int) (Math.random() * 15);
-                        // if this value is not already in newBeats - 
-                        Collections.sort(newBeats);
-                        if (Collections.binarySearch(newBeats, randNum) < 0) {
-                            newBeats.add(randNum);
-                            trackStates[i][randNum] = true;
-                            numChecks--;
-                        }
+                // generate [numChecks] random numbers between 0 and 15
+                ArrayList<Integer> newBeats = new ArrayList<Integer>();
+                for (int x = 0; x < numChecks; x++) {
+//                    System.out.println("Times thru for loop:  " + x);
+                    int randNum = (int) (Math.random() * 15);
+//                    System.out.println("random num: " + randNum);
+                    // if this value is not already in newBeats - 
+//                    System.out.println(newBeats);
+                    while (Collections.binarySearch(newBeats, randNum) >= 0) {
+                        randNum = (int) (Math.random() * 15);
+//                        System.out.println("new random num: " + randNum);
                     }
+                    newBeats.add(randNum);
+                    trackStates[i][randNum] = true;
+//                    System.out.println("Checking track " + i + " beat " + randNum);
                 }
             }
 
