@@ -2,3 +2,4 @@
 *.ser
 .classpath
 .project
+*~
