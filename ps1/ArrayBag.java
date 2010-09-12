@@ -154,7 +154,8 @@ public class ArrayBag implements Bag {
      *int roomLeft() – returns the number of additional items that the ArrayBag has room to store. For example, if the maximum size of the bag is 10 and there are currently 7 items in the bag, this method should return 3, since the bag has room for 3 more items. Hint: This method should only need one or two lines of code.
      */
      public int roomLeft() {
-     	return items.length - numItems;	
+      int room = items.length - numItems; 
+      return room; 
      }
     
     /* Test the ArrayBag implementation. */
@@ -199,6 +200,7 @@ public class ArrayBag implements Bag {
         System.out.println();
         
         // Print how much room is left
-        System.out.println("bag 1 has room for " + bag1.roomLeft() + " items.");
+        int room = bag1.roomLeft();
+        System.out.println("bag 1 has room for " + room + " item or items.");
     }
 }
