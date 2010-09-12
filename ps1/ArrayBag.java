@@ -151,7 +151,7 @@ public class ArrayBag implements Bag {
     }
     
     /**
-     * roomLeft - returns the number of additional items that the ArrayBag has room to store. For example, if the maximum size of the bag is 10 and there are currently 7 items in the bag, this method should return 3, since the bag has room for 3 more items. Hint: This method should only need one or two lines of code.
+     * roomLeft - returns the number of additional items that the ArrayBag has room to store. 
      */
      public int roomLeft() {
          int room = items.length - numItems; 
@@ -167,6 +167,25 @@ public class ArrayBag implements Bag {
          else
              return false;
      }
+     
+     /**
+      * increaseCapacity - increases the maximum capacity of the bag by the specified amount.
+      */
+     public void increaseCapacity(int increment) {
+         if (increment < 0)
+             throw new IllegalArgumentException("number to increase size by must be positive");   
+         if (increment == 0)
+             return;
+         
+         Object[] bigItems = new Object[numItems + increment];
+         //arraycopy(Object src, int srcPos, Object dest, int destPos, int length)
+         // Copies an array from the specified source array, beginning at the specified position, to the specified position of the destination array.
+         // System.arraycopy(items, i+1, items, i, numItems-i-1);
+         System.arraycopy(items, 0, bigItems, 0, items.length);
+         
+         items = bigItems;
+     }
+ 
      
     /* Test the ArrayBag implementation. */
     public static void main(String[] args) {
@@ -216,20 +235,42 @@ public class ArrayBag implements Bag {
         else
             System.out.println("bag 1 has room for " + room + " more items"); 
         
+        // increase the bag's capacity and put some new items in
+        int increment;
+        System.out.print("enter amount to increase bag size:");
+        increment = in.nextInt();
+        bag1.increaseCapacity(increment);
+        size = bag1.numItems() + increment;
+        in.nextLine();
+        for (int i = bag1.numItems(); i < size; i++) {
+            System.out.print("item " + i + ": ");
+            itemStr = in.nextLine();
+            bag1.add(itemStr);
+        }
+//        int[] itemsToAdd = {1486, 0, 67 };
+//        for (int i = 0; i < itemsToAdd.length; i++) {
+//            bag1.add(itemsToAdd[i]); 
+//        }
+        System.out.println("bag 1 = " + bag1);
+        System.out.println();
+        
         // check if bag is empty
         boolean isBag1Empty = bag1.isEmpty();
         // TODO: find cleaner way to do this...
         if (isBag1Empty) {
-            System.out.println("bag 1 is empty");
+            System.out.println("bag 1 = " + bag1);
+            System.out.println();
         } else {
             System.out.println("emptying bag1...");
             Object[] itemsToRemove = bag1.toArray();
             for (int i = 0; i < itemsToRemove.length; i++)
                 bag1.remove(itemsToRemove[i]);
             isBag1Empty = bag1.isEmpty(); 
-            if (isBag1Empty) 
-                System.out.println("bag 1 is empty");       
+            if (isBag1Empty) {
+                System.out.println("bag 1 = " + bag1);
+                System.out.println();
+            }
         }
-   
+                
     }
 }

@@ -57,7 +57,12 @@ public interface Bag {
     int roomLeft();
     
     /**
-     *isEmpty - returns true if the ArrayBag is empty, and false otherwise.
+     * returns true if the ArrayBag is empty, and false otherwise.
      */
     boolean isEmpty();
+    
+    /**
+     * increases the maximum capacity of the bag by the specified amount.
+     */
+    void increaseCapacity(int increment);
 } 
