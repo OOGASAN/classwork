@@ -50,4 +50,9 @@ public interface Bag {
      * toArray - return an array containing the current contents of the bag
      */
     Object[] toArray();
+    
+    /**
+     *roomLeft - return the number of additinal items the bag has room to store
+     */
+    int roomLeft();
 } 
