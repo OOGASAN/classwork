@@ -186,6 +186,10 @@ public class ArrayBag implements Bag {
          items = bigItems;
      }
  
+     public boolean addItems(Bag other) {
+         // awesome code here...  
+         return false;
+     }
      
     /* Test the ArrayBag implementation. */
     public static void main(String[] args) {
@@ -247,12 +251,32 @@ public class ArrayBag implements Bag {
             itemStr = in.nextLine();
             bag1.add(itemStr);
         }
-//        int[] itemsToAdd = {1486, 0, 67 };
-//        for (int i = 0; i < itemsToAdd.length; i++) {
-//            bag1.add(itemsToAdd[i]); 
-//        }
+
         System.out.println("bag 1 = " + bag1);
         System.out.println();
+        
+        // create a new bag and try to add it's items to bag 1
+        System.out.print("Size of bag 2: ");
+        int size2 = in.nextInt();
+        Bag bag2 = new ArrayBag(size2);
+        in.nextLine();    
+        
+        // Read in strings, add them to bag2, and print out bag2.
+        for (int i = 0; i < size2; i++) {
+            System.out.print("item " + i + ": ");
+            itemStr = in.nextLine();
+            bag2.add(itemStr);
+        }
+        System.out.println("bag 2 = " + bag2);
+        System.out.println();
+        
+        boolean bag2Added = bag1.addItems(bag2);
+        if (bag2Added) {
+            System.out.println("bag 1 = " + bag1);
+            System.out.println();
+        } else {
+            System.out.println("there is not enough room in bag 1 for this operation");
+        }
         
         // check if bag is empty
         boolean isBag1Empty = bag1.isEmpty();

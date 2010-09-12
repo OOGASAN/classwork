@@ -65,4 +65,9 @@ public interface Bag {
      * increases the maximum capacity of the bag by the specified amount.
      */
     void increaseCapacity(int increment);
+    
+    /**
+     * attempts to add to the calling ArrayBag all of the items found in the parameter other.
+     */
+    boolean addItems(Bag other);
 } 
