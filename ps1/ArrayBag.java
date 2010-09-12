@@ -151,13 +151,23 @@ public class ArrayBag implements Bag {
     }
     
     /**
-     *int roomLeft() – returns the number of additional items that the ArrayBag has room to store. For example, if the maximum size of the bag is 10 and there are currently 7 items in the bag, this method should return 3, since the bag has room for 3 more items. Hint: This method should only need one or two lines of code.
+     * roomLeft - returns the number of additional items that the ArrayBag has room to store. For example, if the maximum size of the bag is 10 and there are currently 7 items in the bag, this method should return 3, since the bag has room for 3 more items. Hint: This method should only need one or two lines of code.
      */
      public int roomLeft() {
-      int room = items.length - numItems; 
-      return room; 
+         int room = items.length - numItems; 
+         return room; 
      }
-    
+     
+     /**
+      * isEmpty - returns true if the ArrayBag is empty, else returns false
+      */
+     public boolean isEmpty() {
+         if (numItems == 0)
+             return true;
+         else
+             return false;
+     }
+     
     /* Test the ArrayBag implementation. */
     public static void main(String[] args) {
         // Create a Scanner object for user input.
@@ -201,6 +211,25 @@ public class ArrayBag implements Bag {
         
         // Print how much room is left
         int room = bag1.roomLeft();
-        System.out.println("bag 1 has room for " + room + " item or items.");
+        if (room == 1)
+            System.out.println("bag 1 has room for " + room + " more item");
+        else
+            System.out.println("bag 1 has room for " + room + " more items"); 
+        
+        // check if bag is empty
+        boolean isBag1Empty = bag1.isEmpty();
+        // TODO: find cleaner way to do this...
+        if (isBag1Empty) {
+            System.out.println("bag 1 is empty");
+        } else {
+            System.out.println("emptying bag1...");
+            Object[] itemsToRemove = bag1.toArray();
+            for (int i = 0; i < itemsToRemove.length; i++)
+                bag1.remove(itemsToRemove[i]);
+            isBag1Empty = bag1.isEmpty(); 
+            if (isBag1Empty) 
+                System.out.println("bag 1 is empty");       
+        }
+   
     }
 }

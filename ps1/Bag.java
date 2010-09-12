@@ -55,4 +55,9 @@ public interface Bag {
      *roomLeft - return the number of additinal items the bag has room to store
      */
     int roomLeft();
+    
+    /**
+     *isEmpty - returns true if the ArrayBag is empty, and false otherwise.
+     */
+    boolean isEmpty();
 } 
