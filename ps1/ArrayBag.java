@@ -187,8 +187,15 @@ public class ArrayBag implements Bag {
      }
  
      public boolean addItems(Bag other) {
-         // awesome code here...  
-         return false;
+         if (roomLeft() >= other.numItems()) {
+             Object[] otherItems = other.toArray();
+             for (int i = 0; i < otherItems.length; i++) {
+                 add(otherItems[i]);
+             }
+             return true;
+         } else {
+             return false;
+         }
      }
      
     /* Test the ArrayBag implementation. */
@@ -224,14 +231,6 @@ public class ArrayBag implements Bag {
             System.out.println(items[i]);
         System.out.println();
         
-        // Get an item to remove from bag1, remove it, and reprint the bag.
-        System.out.print("item to remove: ");
-        itemStr = in.nextLine();
-        if (bag1.contains(itemStr))
-            bag1.remove(itemStr);
-        System.out.println("bag 1 = " + bag1);
-        System.out.println();
-        
         // Print how much room is left
         int room = bag1.roomLeft();
         if (room == 1)
@@ -241,7 +240,7 @@ public class ArrayBag implements Bag {
         
         // increase the bag's capacity and put some new items in
         int increment;
-        System.out.print("enter amount to increase bag size:");
+        System.out.print("enter amount to add to bag size:");
         increment = in.nextInt();
         bag1.increaseCapacity(increment);
         size = bag1.numItems() + increment;
@@ -254,6 +253,23 @@ public class ArrayBag implements Bag {
 
         System.out.println("bag 1 = " + bag1);
         System.out.println();
+        
+        // PUT IN LOOP!
+        // Get an item to remove from bag1, remove it, and reprint the bag.
+        System.out.print("item to remove: ");
+        itemStr = in.nextLine();
+        if (bag1.contains(itemStr))
+            bag1.remove(itemStr);
+        System.out.println("bag 1 = " + bag1);
+        System.out.println();   
+        
+         // Get an item to remove from bag1, remove it, and reprint the bag.
+        System.out.print("item to remove: ");
+        itemStr = in.nextLine();
+        if (bag1.contains(itemStr))
+            bag1.remove(itemStr);
+        System.out.println("bag 1 = " + bag1);
+        System.out.println();            
         
         // create a new bag and try to add it's items to bag 1
         System.out.print("Size of bag 2: ");
