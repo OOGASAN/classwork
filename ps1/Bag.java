@@ -57,17 +57,22 @@ public interface Bag {
     int roomLeft();
     
     /**
-     * returns true if the ArrayBag is empty, and false otherwise.
+     * returns true if the ArrayBag is empty, and false otherwise
      */
     boolean isEmpty();
     
     /**
-     * increases the maximum capacity of the bag by the specified amount.
+     * increases the maximum capacity of the bag by the specified amount
      */
     void increaseCapacity(int increment);
     
     /**
-     * attempts to add to the calling ArrayBag all of the items found in the parameter other.
+     * attempts to add to the calling ArrayBag all of the items found in the parameter other
      */
     boolean addItems(Bag other);
+    
+    /**
+     * creates and returns an ArrayBag containing one occurrence of any item that is found in both the calling object and the parameter other
+     */
+    Bag intersectionWith(Bag other); 
 } 

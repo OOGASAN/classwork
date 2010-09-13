@@ -198,6 +198,25 @@ public class ArrayBag implements Bag {
          }
      }
      
+     /**
+      * creates and returns an ArrayBag containing one occurrence of any item that is found in both the calling object and the parameter other.
+      */
+     public Bag intersectionWith(Bag other) {
+         // max size we should need
+         int otherSize = other.numItems();
+         int size = numItems + otherSize;
+         Object setBag = new ArrayBag(size);
+         
+         for (int i = 0; i < numItems; i++) {
+             if (!setBag.contains(i)) {
+                 if (other.contains(i)) {
+                     setBag.add(i);
+                 }
+             }
+         }
+         return setBag;
+     }
+     
     /* Test the ArrayBag implementation. */
     public static void main(String[] args) {
         // Create a Scanner object for user input.
@@ -293,6 +312,25 @@ public class ArrayBag implements Bag {
         } else {
             System.out.println("there is not enough room in bag 1 for this operation");
         }
+        
+         // create a new bag and get the intersection with this bag and bag 1
+        System.out.print("Size of bag 3: ");
+        int size3 = in.nextInt();
+        Bag bag3 = new ArrayBag(size3);
+        in.nextLine();    
+        
+        for (int i = 0; i < size3; i++) {
+            System.out.print("item " + i + ": ");
+            itemStr = in.nextLine();
+            bag3.add(itemStr);
+        }
+        System.out.println("bag 3 = " + bag3);
+        System.out.println();
+        
+        Bag setBag = bag1.intersectionWith(bag3);
+        System.out.println("Intersection of bag 1 and bag 3 is: " + setBag);
+        System.out.println();        
+               
         
         // check if bag is empty
         boolean isBag1Empty = bag1.isEmpty();
