@@ -205,15 +205,20 @@ public class ArrayBag implements Bag {
          // max size we should need
          int otherSize = other.numItems();
          int size = numItems + otherSize;
-         Object setBag = new ArrayBag(size);
+         Bag setBag = new ArrayBag(size);
          
+         // loop through this bag items
          for (int i = 0; i < numItems; i++) {
-             if (!setBag.contains(i)) {
-                 if (other.contains(i)) {
-                     setBag.add(i);
+//             System.out.println("break");
+             // if item isn't already in setBag
+             if (!setBag.contains(items[i])) {
+                 // if it is in other bag
+                 if (other.contains(items[i])) {
+                     setBag.add(items[i]);
                  }
              }
          }
+
          return setBag;
      }
      
@@ -310,7 +315,7 @@ public class ArrayBag implements Bag {
             System.out.println("bag 1 = " + bag1);
             System.out.println();
         } else {
-            System.out.println("there is not enough room in bag 1 for this operation");
+            System.out.println("there is not enough room for bag 2's items in bag 1");
         }
         
          // create a new bag and get the intersection with this bag and bag 1
@@ -328,7 +333,7 @@ public class ArrayBag implements Bag {
         System.out.println();
         
         Bag setBag = bag1.intersectionWith(bag3);
-        System.out.println("Intersection of bag 1 and bag 3 is: " + setBag);
+        System.out.println("Intersection of bag 1 " + bag1 + " and bag 3 " + bag3 + " is: " + setBag);
         System.out.println();        
                
         
