@@ -30,7 +30,7 @@ def squares_less_than(n):
 		temp -= 1
 		squares_less_than(temp)
 		
-squares_less_than(140)
+#squares_less_than(140)
 
 print squares
 
@@ -41,7 +41,7 @@ def find_sum(n,i,TEMP):
 			print terms
 			return True
 			
-		squares = []	
+		# fill squares w values
 		squares_less_than(n)
 		for j,val in enumerate(squares):
 			if j < 4:
@@ -52,7 +52,7 @@ def find_sum(n,i,TEMP):
 			
 		return False
 	
-#find_sum(140,0,4)
+find_sum(140,0,4)
 		
 		
 		
