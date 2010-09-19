@@ -1,6 +1,6 @@
 import math
 
-#squares = []
+squares = []
 terms = []
 
 def largest_square(n):
@@ -19,12 +19,10 @@ def largest_square(n):
 #	   
 
 def squares_less_than(n):
-	squares = []
-	print squares
 	# 1 is only perfect square lower than four, so just return 1 and quit
 	if n < 4:
 		squares.append(1)
-		return squares
+		return True
 		 
 	else:
 		temp = largest_square(n)
@@ -32,25 +30,27 @@ def squares_less_than(n):
 		temp -= 1
 		squares_less_than(temp)
 		
-print squares_less_than(140)
+squares_less_than(140)
 
+print squares
 
-#def find_sum(n,i,TEMP):
-#	if TEMP > 0:
-#		print n
-#		if sum(terms) == n and i <= 4:
-#			print terms
-#			return True
-#			
-#		squares_less_than(n)
-#		for j,val in enumerate(squares):
-#			if j < 4:
-#				terms.append(val)
-#				if find_sum(n-largest_square(n), j+1,TEMP-1):
-#					return true
-#				terms.remove(val)
-#			
-#		return False
+def find_sum(n,i,TEMP):
+	if TEMP > 0:
+		print n
+		if sum(terms) == n and i <= 4:
+			print terms
+			return True
+			
+		squares = []	
+		squares_less_than(n)
+		for j,val in enumerate(squares):
+			if j < 4:
+				terms.append(val)
+				if find_sum(n-largest_square(n), j+1,TEMP-1):
+					return true
+				terms.remove(val)
+			
+		return False
 	
 #find_sum(140,0,4)
 		
