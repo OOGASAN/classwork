@@ -64,7 +64,7 @@ def find_sum(n,i,TEMP):
 			
 		# fill squares w values
 		squares = squares_less_than(n)
-		if len(squares) < 1:
+		if len(squares) > 1:
 			squares.append(1)
 		for j,val in enumerate(squares):
 			print '%s: %s' % (n,squares)
