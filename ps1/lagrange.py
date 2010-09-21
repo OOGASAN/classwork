@@ -7,37 +7,6 @@ def largest_square(n):
 	temp = int(math.sqrt(n))
 	return temp * temp
 	
-# version 1, just return squares
-#def find_sum(n):
-#	if n == 1:
-#		print terms
-#		return
-#	else:
-#		square = largest_square(n)
-#		terms.append(square)
-#		find_sum(n - square)
-#	   
-
-#def is_square(apositiveint):
-#	if apositiveint > 0:
-#		x = apositiveint // 2
-#		seen = set([x])
-#		while x * x != apositiveint:
-#			x = (x + (apositiveint // x)) // 2
-#			if x in seen: return False
-#			seen.add(x)
-#		return True
-#
-#def squares_less_than(n):
-#	squares = []
-#	while n > 1:
-#		if is_square(n):
-#			squares.append(n)
-#		n -= 1
-#	return squares
-	
-
-
 def squares_less_than(n):
 	# 1 is only perfect square lower than four, so just return 1 and quit
 	if n < 4:
@@ -61,7 +30,6 @@ def find_sum(n,i,TEMP):
 			print 'success! %s' % terms
 			return True
 			
-
 		for val in squares[i:]:
 			if len(terms) < 4:
 				terms.append(val)
