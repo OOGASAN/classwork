@@ -36,7 +36,11 @@ public class StringRecursion {
     public static String trim(String str) {
         if (str == null) {
             return null;
-        } else if (str.length() == 0 || (str.charAt(0) != " ".charAt(0) && str.charAt(str.length()-1) != " ".charAt(0))) {
+        // return imediately if string is empty or its only char is a space
+        } else if (str.length() == 0 || str.equals(" ")) {
+            return str;
+        // base case - non-space char on both ends of string
+        } else if (str.charAt(0) != " ".charAt(0) && str.charAt(str.length()-1) != " ".charAt(0)) {
             return str;
         } else {
             if (str.charAt(0) == " ".charAt(0))
