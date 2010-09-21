@@ -32,6 +32,20 @@ public class StringRecursion {
             return temp + reverse(sub);
         } 
     }
+    
+    public static String trim(String str) {
+        if (str == null) {
+            return null;
+        } else if (str.length() == 0 || (str.charAt(0) != " ".charAt(0) && str.charAt(str.length()-1) != " ".charAt(0))) {
+            return str;
+        } else {
+            if (str.charAt(0) == " ".charAt(0))
+                str = str.substring(1,str.length());
+            if (str.charAt(str.length()-1) == " ".charAt(0))
+                str = str.substring(0,str.length()-1);
+            return trim(str);
+        }
+    }
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -42,6 +56,8 @@ public class StringRecursion {
         System.out.println("Enter a string to reverse");
         stringToTest = in.nextLine();
         System.out.println(reverse(stringToTest)); 
-
+        System.out.println("Enter a string to trim");
+        stringToTest = in.nextLine();
+        System.out.println(trim(stringToTest)); 
     } 
 }
