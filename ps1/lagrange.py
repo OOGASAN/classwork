@@ -19,28 +19,28 @@ def squares_less_than(n):
 		temp -= 1
 		squares_less_than(temp)
 
-ORIG_NUM = 11
+ORIG_NUM = 7
 squares_less_than(ORIG_NUM)
 #squares.append(1)		
 
-def find_sum(n,i,TEMP):
-	if TEMP > 0:
-		print n
-		if sum(terms) == ORIG_NUM and i <= 4:
-			print 'success! %s' % terms
-			return True
-			
-		for val in squares[i:]:
-			if len(terms) < 4:
-				terms.append(val)
-				if find_sum(n-squares[i], i,TEMP-1):
-					print 'good terms so far: %s' % terms
-					return True
-				terms.remove(val)
-		print 'bad terms: %s' % terms	
-		return False
+def find_sum(n,i):
+
+#	print n
+	if sum(terms) == ORIG_NUM and i <= 4:
+		print 'success! %s' % terms
+		return True
+		
+	for val in squares[i:]:
+		if len(terms) < 4:
+			terms.append(val)
+			if find_sum(n-squares[i], i):
+#				print 'good terms so far: %s' % terms
+				return True
+			terms.remove(val)
+#	print 'bad terms: %s' % terms	
+	return False
 	
-find_sum(ORIG_NUM,0,4)
+find_sum(ORIG_NUM,0)
 		
 		
 		
