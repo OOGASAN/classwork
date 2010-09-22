@@ -278,7 +278,6 @@ public class ArrayBag implements Bag {
         System.out.println("bag 1 = " + bag1);
         System.out.println();
         
-        // PUT IN LOOP!
         // Get an item to remove from bag1, remove it, and reprint the bag.
         System.out.print("item to remove: ");
         itemStr = in.nextLine();
@@ -339,7 +338,6 @@ public class ArrayBag implements Bag {
         
         // check if bag is empty
         boolean isBag1Empty = bag1.isEmpty();
-        // TODO: find cleaner way to do this...
         if (isBag1Empty) {
             System.out.println("bag 1 = " + bag1);
             System.out.println();

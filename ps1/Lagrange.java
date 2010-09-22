@@ -4,6 +4,13 @@
  * Author:          Sam Tymorek, samtymorek@hotmail.com
  * TF:              <your TF's name>
  * Date modified:   09/21/2010
+ *
+ * Known bugs: In some cases, prints out extra terms. For example:
+ * Enter a positive integer (-1 to quit):140
+ * 140=9+121+9+1
+ * However, works in other cases, for example:
+ * Enter a positive integer (-1 to quit):17
+ * 17=16+1
  */
 
 /**
@@ -15,13 +22,16 @@ import java.util.*;
 
 public class Lagrange {
     /* Put your data members below. */
-//    private int[] terms = new int[4];
-    public ArrayList<Integer> terms = new ArrayList<Integer>();
-    
-    private static ArrayList<Integer> squaresLessThan = new ArrayList<Integer>();
-    
+
+    // number entered by user
     private static int origNum;
       
+    // the list we will fill with perfect squares that add up to the number entered by user
+    public ArrayList<Integer> terms = new ArrayList<Integer>();
+    
+    // list of all squares less than number input by user
+    private static ArrayList<Integer> squaresLessThanNum = new ArrayList<Integer>();
+    
     /**
      * largestSquare - returns the largest perfect square less than or
      * or equal to the specified positive integer.
@@ -33,15 +43,19 @@ public class Lagrange {
         return temp * temp;
     }
     
+    /**
+     * getSquaresLessThanNum - adds all the squares less than a given 
+     * number to an arraylist
+     */
     private static void getSquaresLessThanNum(int n) {
         if (n < 0)
             throw new IllegalArgumentException("n must be positive");
         if (n < 4) {
-            squaresLessThan.add(1);
+            squaresLessThanNum.add(1);
             return;
         } else {
             int temp = largestSquare(n);
-            squaresLessThan.add(temp);
+            squaresLessThanNum.add(temp);
             temp--;
             getSquaresLessThanNum(temp);
         }    
@@ -49,37 +63,27 @@ public class Lagrange {
 
     /* Put your constructors and methods below. */  
     public Lagrange() {
-        if (squaresLessThan.size() > 0) {
-            squaresLessThan.clear();
+        if (squaresLessThanNum.size() > 0) {
+            squaresLessThanNum.clear();
         }
     }    
- 
-//    public int numTerms() {
-//        int num = 0;
-//        for (int i=0; i<terms.length; i++) {
-//            if(terms[i] > 0)
-//                num++;
-//        };
-//        return num;
-//    }
-//    
-    public boolean findSum(int n, int i) {
+
+    private boolean findSum(int n, int i) {
+
         // get sum of terms so far
         int sumOfTerms = 0;
-//        for (int j = 0; j < terms.size(); j++)
-//            sumOfTerms += terms[j];
         for (Integer t : terms)
              sumOfTerms += t;
         if (sumOfTerms == origNum && i <= 4)
             return true;
         
-        for (int j = i; j < squaresLessThan.size(); j++) {
+        for (int j = i; j < squaresLessThanNum.size(); j++) {
             if (terms.size() < 4) {
-                terms.add(squaresLessThan.get(j));
-                int newNum = n - squaresLessThan.get(j);
+                terms.add(squaresLessThanNum.get(j));
+                int newNum = n - squaresLessThanNum.get(j);
                 if (findSum(newNum, i))
                     return true;
-                terms.remove(squaresLessThan.get(j));    
+                terms.remove(squaresLessThanNum.get(j));    
             }    
         }
         
@@ -114,8 +118,6 @@ public class Lagrange {
                     System.out.println(Integer.toString(lagrange.terms.get(i)));
                 }
             }
-//            lagrange.getSquaresLessThanNum(num);
-            System.out.println(lagrange.squaresLessThan);
         }
     }
 
