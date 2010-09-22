@@ -76,7 +76,8 @@ public class Lagrange {
         for (int j = i; j < squaresLessThan.size(); j++) {
             if (terms.size() < 4) {
                 terms.add(squaresLessThan.get(j));
-                if (findSum(n - squaresLessThan.get(j), j))
+                int newNum = n - squaresLessThan.get(j);
+                if (findSum(newNum, i))
                     return true;
                 terms.remove(squaresLessThan.get(j));    
             }    
