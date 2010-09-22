@@ -16,9 +16,9 @@ import java.util.*;
 public class Lagrange {
     /* Put your data members below. */
 //    private int[] terms = new int[4];
-    public ArrayList<Integer> terms = new ArrayList<Integer>();
+    public static int[] terms = new int[4];
     
-    private static ArrayList<Integer> squaresLessThan = new ArrayList<Integer>();
+    private static int[] squaresLessThan = new int[1000];
     
     private static int origNum;
       
@@ -33,62 +33,61 @@ public class Lagrange {
         return temp * temp;
     }
     
-    private static void getSquaresLessThanNum(int n) {
+    private static void getSquaresLessThanNum(int n, int i) {
         if (n < 0)
             throw new IllegalArgumentException("n must be positive");
         if (n < 4) {
-            squaresLessThan.add(1);
+            squaresLessThan[i] = 1;
             return;
         } else {
             int temp = largestSquare(n);
-            squaresLessThan.add(temp);
+            squaresLessThan[i] = temp;
             temp--;
-            getSquaresLessThanNum(temp);
+            getSquaresLessThanNum(temp, i+1);
         }    
     }    
 
     /* Put your constructors and methods below. */  
-    public Lagrange() {
-        if (squaresLessThan.size() > 0) {
-            squaresLessThan.clear();
-        }
-    }    
- 
-//    public int numTerms() {
-//        int num = 0;
-//        for (int i=0; i<terms.length; i++) {
-//            if(terms[i] > 0)
-//                num++;
-//        };
-//        return num;
-//    }
-//    
-    public boolean findSum(int n, int i) {
-        // get sum of terms so far
-        int sumOfTerms = 0;
-//        for (int j = 0; j < terms.size(); j++)
+//    public Lagrange() {
+//        if (squaresLessThan.size() > 0) {
+//            squaresLessThan.clear();
+//        }
+//    }    
+// 
+    public int numTerms() {
+        int num = 0;
+        for (int i = 0; i < terms.length; i++) {
+            if(terms[i] > 0)
+                num++;
+        };
+        return num;
+    }
+    
+//    public boolean findSum(int n, int i) {
+//        // get sum of terms so far
+//        int sumOfTerms = 0;
+//        for (int j = 0; j < terms.length(); j++)
 //            sumOfTerms += terms[j];
-        for (Integer t : terms)
-             sumOfTerms += t;
-        if (sumOfTerms == origNum && i <= 4)
-            return true;
-        
-        for (int j = i; j < squaresLessThan.size(); j++) {
-            if (terms.size() < 4) {
-                terms.add(squaresLessThan.get(j));
-                if (findSum(n - squaresLessThan.get(j), j))
-                    return true;
-                terms.remove(squaresLessThan.get(j));    
-            }    
-        }
-        
-        return false;
-    }    
+// 
+//        if (sumOfTerms == origNum && i <= 4)
+//            return true;
+//        
+//        for (int j = i; j < squaresLessThan.length; j++) {
+//            if (terms.numTerms < 4) {
+//                terms.add(squaresLessThan.get(j));
+//                if (findSum(n - squaresLessThan.get(j), j))
+//                    return true;
+//                terms.remove(squaresLessThan.get(j));    
+//            }    
+//        }
+//        
+//        return false;
+//    }    
     
     public void getLagrangeNums(int n) {
         origNum = n;
-        getSquaresLessThanNum(origNum);
-        findSum(origNum,0);
+        getSquaresLessThanNum(origNum, 0);
+//        findSum(origNum,0);
     }    
     
     public static void main(String args[]) {
@@ -106,11 +105,11 @@ public class Lagrange {
             lagrange.getLagrangeNums(num); 
            
             System.out.print(Integer.toString(num) + "=");
-            for(int i = 0; i < lagrange.terms.size(); i++) {
-                if (i != lagrange.terms.size() - 1) {
-                    System.out.print(Integer.toString(lagrange.terms.get(i)) + "+");
+            for(int i = 0; i < lagrange.numTerms(); i++) {
+                if (i != lagrange.numTerms() - 1) {
+                    System.out.print(Integer.toString(lagrange.terms[i]) + "+");
                 } else {   
-                    System.out.println(Integer.toString(lagrange.terms.get(i)));
+                    System.out.println(Integer.toString(lagrange.terms[i]));
                 }
             }
 //            lagrange.getSquaresLessThanNum(num);
