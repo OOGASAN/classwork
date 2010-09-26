@@ -1,4 +1,4 @@
-/*
+  /*
  * Sort.java
  *
  * Computer Science E-119, Harvard University
@@ -83,13 +83,14 @@ public class Sort {
          * Find initial increment: one less than the largest
          * power of 2 that is <= the number of objects.
          */
-        int incr = 1;
-        while (2 * incr <= arr.length)
-            incr = 2 * incr;
-        incr = incr - 1;
+//        int incr = 1;
+//        while (2 * incr <= arr.length)
+//            incr = 2 * incr;
+//        incr = incr - 1;
+		int incr = 3;
 
         /* Do insertion sort for each increment. */
-        while (incr >= 1) {
+        while (incr == 3) {
             for (int i = incr; i < arr.length; i++) {
                 if (arr[i] < arr[i-incr]) {
                     int toInsert = arr[i];
