@@ -3,24 +3,72 @@ samtymorek@hotmail.com
 Problem Set 2
 
 1)
+
 a) 3 4 18 24 33 40 8 10 12
 b) 4 10 18 24 33 40 8 3 12
 c) 8 3 4 10 18 12 24 33 40
 d) 4 10 18 8 3 12 24 33 40
-e)
-f)
-g)
+e) 10 18 4 24 12 3 8 40 33
+f) TODO
+g) TODO
 
 
 ==============================================================================
+
 2)
+
 a) 10 comparisons 
 The algorithm starts with the second element,and compares it to the element on the left, 
 then takes the third element and compares it with both elements on its left, and so on,
-so in there will be N(N-1)/2 comparisons or 10.
+so in there will be 5*(5-1)/2 comparisons or 10.
 
 b) 10 comparisons
 The algorithm makes N-1 comparisons on the first pass, N-2 comparisons on the second pass,
-etc. so there will be a total of N(N-1)/2 comparisons or 10.
+etc. so there will be a total of 5*(5-1)/2 comparisons or 10.
+
+c) TODO
+
+
+==============================================================================
+
+3)
+
+Algorithm A - O(n^2)
+Algorithm A makes n-1 comparisons the first time through the outer for loop, then  makes
+n-2 comparisons the second pass, n-3 the third time, etc.  This equals n*(n-1)/2 or 0(n^2).
+
+Algorithm B - O(n log n)
+Algorithm B can be said to run in O(n log n) time.  After the call to mergesort(), the algorithm
+runs in linear time or O(n) because it will always make n-1 comparisons - comparing every element after the
+first element to the element before it.  However, the mergesort algorithm adds an overhead of O(n log n).
+
+==============================================================================
+4)
+a) (n - (n - 1)) + (n - (n - 2)) + (n - (n - 3)) … (n - (n - n)) = n * (n + 1) \ 2
+for example : for n = 5:
+	1 + 2 + 3 + 4 + 5 = 15 = 5 * (5 + 1) \ 2
+	
+b) 0(n^2)
+We ignore the constants 1 and 2 in the above equation and just take n^2, just as we do when 
+expressing n * (n - 1) \ 2 formulas in big-O notation.
 
 c)
+public static void generateSums(int n) {
+	int sum = 0;
+	int i = 1;
+	while (i <= n) {
+		sum = sum + i;
+		i++;
+		System.out.println(sum);		
+	}
+}
+
+d)
+O(n)
+This algorithm runs through the loop and does the main work of the function n times, no matter how large n is.
+
+
+==============================================================================
+5)
+==============================================================================
+6)
