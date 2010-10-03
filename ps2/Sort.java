@@ -23,6 +23,8 @@
  */
 public class Sort {
     public static final int NUM_ELEMENTS = 9;
+    
+    public static int mergeCount = 0;
 
     /*
      * swap - swap the values of two variables.
@@ -87,7 +89,7 @@ public class Sort {
 //        while (2 * incr <= arr.length)
 //            incr = 2 * incr;
 //        incr = incr - 1;
-		int incr = 3;
+  int incr = 3;
 
         /* Do insertion sort for each increment. */
         while (incr == 3) {
@@ -191,6 +193,13 @@ public class Sort {
         mSort(arr, tmp, start, middle);
         mSort(arr, tmp, middle + 1, end);
         merge(arr, tmp, start, middle, middle + 1, end);
+        if (mergeCount < 4) {
+            mergeCount++;
+        } else {
+            System.out.print("merged 4 times: ");
+            printArray(arr);
+            System.exit(0);
+        }    
     }
     
     /** mergesort */
@@ -220,7 +229,7 @@ public class Sort {
 //        printArray(orig);
 
 
-		int[] orig = {10, 18, 4, 24, 33, 40, 8, 3, 12};
+  int[] orig = {10, 18, 4, 24, 33, 40, 8, 3, 12};
 
         int[] copy = new int[NUM_ELEMENTS];
 
