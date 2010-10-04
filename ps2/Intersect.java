@@ -16,17 +16,19 @@ public class Intersect {
         for (int i = 0; i < arr1.length; i++) {
             int j = i;
             // if i is greater than 0, check if arr[i] != arr[i-1] to eliminate dups
-//            if (i > 0 && arr1[i] == arr1[i-1]) {
-//                break;
-//            }    
-            
-                if (j < arr2.length) {            
+            boolean notDup = true;
+            if (i > 0 ) {
+                if (arr1[i] == arr1[i-1]) { 
+                    notDup = false;            
+                }
+            }
+            if (notDup) {          
+                if (j < arr2.length - 1) {            
                     try {
                         while (arr2[j] <= arr1[i]) {    
                             if (arr1[i] == arr2[j]) {
                                 arr3[k] = arr1[i];
                                 k++;
-                                j++;
                                 break;    
                             }
                             j++; 
@@ -34,10 +36,10 @@ public class Intersect {
                     } catch (ArrayIndexOutOfBoundsException e) {
                         System.out.println("exception!");
                     }  
-                }    
+                } 
+            }   
         }    
         
-        // array will be padded with 0s for indices not filled
         return arr3;    
     }
     
@@ -54,5 +56,4 @@ public class Intersect {
         System.out.println("Intersection: ");
         SortCount.printArray(intersect(arr1, arr2));        
     }        
-    
 }    
