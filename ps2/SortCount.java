@@ -236,6 +236,7 @@ public class SortCount {
         while (incr >= 1) {    
             for (int i = arr.length - 1; i > 0; i--) {
                 for (int j = 0; j + incr <= i; j++) {
+                	System.out.println("comparing: " + arr[j] + " " + arr[j+incr]);
                     if (compare(arr[j] > arr[j+incr]))
                         swap(arr, j, j+incr);
                 }
