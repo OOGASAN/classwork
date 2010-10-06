@@ -372,36 +372,40 @@ public class SortCount {
     }
 
     public static void main(String args[]) {
-        int[] a;       // the array
-        int[] asave;   // a copy of the original unsorted array
+//        int[] a;       // the array
+//        int[] asave;   // a copy of the original unsorted array    	
+        // TEMP:	
+        int[] a = { 20, 7, 14, 18, 2, 30, 6, 23, 11, 5 };         
+        int[] asave = { 20, 7, 14, 18, 2, 30, 6, 23, 11, 5 };         
         int numItems;
         String arrayType;
 
         /*
          * Get various parameters from the user.
          */
-        Scanner in = new Scanner(System.in);
-        System.out.print("How many items in the array? ");
-        numItems = in.nextInt();
-        in.nextLine();
-        System.out.print("Random (r), almost sorted (a), or fully sorted (f)? ");
-        arrayType = in.nextLine();
-        System.out.println();
-
-        /* 
-         * Create the arrays.   
-         */
-        if (arrayType.equalsIgnoreCase("A"))
-            a = almostSortedArray(numItems);
-        else {
-            a = randomArray(numItems);
-            if (arrayType.equalsIgnoreCase("F"))
-                quickSort(a);
-        }
-
-        asave = new int[numItems];
-        System.arraycopy(a, 0, asave, 0, a.length);
-        printArray(a);
+        // TEMP: removed for testing
+//        Scanner in = new Scanner(System.in);
+//        System.out.print("How many items in the array? ");
+//        numItems = in.nextInt();
+//        in.nextLine();
+//        System.out.print("Random (r), almost sorted (a), or fully sorted (f)? ");
+//        arrayType = in.nextLine();
+//        System.out.println();
+//
+//        /* 
+//         * Create the arrays.   
+//         */
+//        if (arrayType.equalsIgnoreCase("A"))
+//            a = almostSortedArray(numItems);
+//        else {
+//            a = randomArray(numItems);
+//            if (arrayType.equalsIgnoreCase("F"))
+//                quickSort(a);
+//        }
+//        
+//        asave = new int[numItems];
+//        System.arraycopy(a, 0, asave, 0, a.length);
+//        printArray(a);
 
         /*
          * Try each of the various algorithms, starting each time 
