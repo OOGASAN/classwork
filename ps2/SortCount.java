@@ -222,7 +222,26 @@ public class SortCount {
             }
         }
     }
+    
+    /** shellBubbleSort */
+    public static void shellBubbleSort(int[] arr) {
+        /*
+         * Find initial increment: one less than the largest
+         * power of 2 that is <= the number of objects.
+         */
+        int incr = 1;
+        while (2 * incr <= arr.length)
+            incr = 2 * incr;
+        incr = incr - 1;
 
+        /* Do bubble sort for each increment. */
+        while (incr >= 1) {    
+
+
+            // Calculate increment for next pass.
+            incr = incr / 2;        
+        }
+    }	
     /*
      * A helper method for qSort that takes the array that begins with
      * element arr[first] and ends with element arr[last] and
@@ -426,5 +445,12 @@ public class SortCount {
         bubbleSort(a);
         printStats();
         printArray(a);
+        
+        System.out.print("shellBubbleSort\t\t");
+        System.arraycopy(asave, 0, a, 0, asave.length);
+        initStats();
+        shellBubbleSort(a);
+        printStats();
+        printArray(a);        
     }
 }
