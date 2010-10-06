@@ -226,20 +226,23 @@ public class SortCount {
     /** shellBubbleSort */
     public static void shellBubbleSort(int[] arr) {
         /*
-         * Find initial increment: one less than the largest
-         * power of 2 that is <= the number of objects.
+         * Borrowing Knuth's sequence via Lafore
          */
         int incr = 1;
-        while (2 * incr <= arr.length)
-            incr = 2 * incr;
-        incr = incr - 1;
+        while (incr <= arr.length / 3)
+            incr = incr * 3 + 1;
 
         /* Do bubble sort for each increment. */
         while (incr >= 1) {    
-
+            for (int i = arr.length - 1; i > 0; i--) {
+                for (int j = 0; j + incr <= i; j++) {
+                    if (compare(arr[j] > arr[j+incr]))
+                        swap(arr, j, j+incr);
+                }
+            }
 
             // Calculate increment for next pass.
-            incr = incr / 2;        
+            incr = (incr - 1) / 3;        
         }
     }	
     /*
