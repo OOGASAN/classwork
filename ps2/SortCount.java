@@ -22,6 +22,7 @@ public class SortCount {
      * the integers in the test arrays are drawn from the range 
      * 0, ..., MAX_VAL 
      */
+//    private static int MAX_VAL = 65536;	
     private static int MAX_VAL = 20;
 
     private static long compares;     // total number of comparisons
