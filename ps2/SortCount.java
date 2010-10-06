@@ -233,8 +233,10 @@ public class SortCount {
             incr = incr * 3 + 1;
 
         /* Do bubble sort for each increment. */
-        while (incr >= 1) {    
-            for (int i = arr.length - 1; i > 0; i--) {
+        while (incr >= 1) {  
+        	// number of passes made with this incr
+        	int pass_at_incr = 1;        	
+            for (int i = arr.length - 1; i > 0; i -= (pass_at_incr * incr)) {
                 for (int j = 0; j + incr <= i; j++) {
                 	System.out.println("comparing: " + arr[j] + " " + arr[j+incr]);
                     if (compare(arr[j] > arr[j+incr]))
