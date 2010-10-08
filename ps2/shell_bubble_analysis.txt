@@ -1,0 +1,27 @@
+1000, 2000, 4000, 8000 and 16000
+
+
+fully sorted:   comparisons     moves
+n = 1000        5457            0           compare to merge c(5048) m(5044) and shell c(7987)
+n = 2000        12364           0 
+n = 4000        27084           0
+n = 8000        59084           0
+n = 16000       129243          0           compare to merge c(113574) m(447232) and shell c(191631)
+
+
+
+
+random:
+n = 1000        52265           26459       compare to shell (c)14763 (m)15623  and insertion (c) 246721 (m) 247707
+
+n = 2000        131754          63472.8 
+
+n = 4000        351910          159730.2 
+
+n = 8000        876599.4        373695
+        
+n = 16000       2123513.2       877566      compare to shell (c) 433303 (m) 459523 and insertion (c) 63827996 (m) 63843975
+
+
+
+Best case scenario - O(n log n), same as sorts it lies between
