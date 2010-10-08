@@ -3,9 +3,12 @@
 
 fully sorted:   comparisons     moves
 n = 1000        5457            0           compare to merge c(5048) m(5044) and shell c(7987)
+*2              2.25
 n = 2000        12364           0 
+*4              5
 n = 4000        27084           0
 n = 8000        59084           0
+*8              24
 n = 16000       129243          0           compare to merge c(113574) m(447232) and shell c(191631)
 
 
@@ -13,13 +16,13 @@ n = 16000       129243          0           compare to merge c(113574) m(447232)
 
 random:
 n = 1000        52265           26459       compare to shell (c)14763 (m)15623  and insertion (c) 246721 (m) 247707
-
+n*2=            n*2.5=          n*2.4
 n = 2000        131754          63472.8 
-
+4               7               6
 n = 4000        351910          159730.2 
 
 n = 8000        876599.4        373695
-        
+8               40              33                     
 n = 16000       2123513.2       877566      compare to shell (c) 433303 (m) 459523 and insertion (c) 63827996 (m) 63843975
 
 
