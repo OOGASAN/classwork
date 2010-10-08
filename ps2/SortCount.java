@@ -238,18 +238,29 @@ public class SortCount {
         /* Do bubble sort for each increment. */
         while (incr >= 1) {  
         	// number of passes made with this incr
-        	int pass_at_incr = 1;        	
-            for (int i = arr.length - 1; i > 0; i -= (pass_at_incr * incr)) {
+        	int passAtIncr = 1;        	
+            for (int i = arr.length - 1; i > 0; i -= (passAtIncr * incr)) {
+            	int numSwapsThisPass = 0;
                 for (int j = 0; j + incr <= i; j++) {
                 	System.out.println("comparing: " + arr[j] + " " + arr[j+incr]);
-                    if (compare(arr[j] > arr[j+incr]))
-                        swap(arr, j, j+incr);
+                    if (compare(arr[j] > arr[j+incr])) {
+                    	System.out.println("swapping: " + arr[j] + " " + arr[j+incr]);
+                    	swap(arr, j, j+incr);
+                    	numSwapsThisPass++;
+                    }
+                }
+                if (numSwapsThisPass == 0) {
+                	if (incr == 1)
+                		return;
+                	else
+                		break;
+                	
                 }
             }
 
             // Calculate increment for next pass.
 //            incr = (incr - 1) / 3;     
-            incr = 1;
+            incr = incr/2;
         }
     }	
     /*
