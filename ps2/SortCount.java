@@ -22,8 +22,7 @@ public class SortCount {
      * the integers in the test arrays are drawn from the range 
      * 0, ..., MAX_VAL 
      */
-//    private static int MAX_VAL = 65536;	
-    private static int MAX_VAL = 20;
+    private static int MAX_VAL = 65536;	
 
     private static long compares;     // total number of comparisons
     private static long moves;        // total number of moves
@@ -229,11 +228,9 @@ public class SortCount {
         /*
          * Borrowing Knuth's sequence via Lafore
          */
-    	// TEMP:
-    	int incr = 3;
-//        int incr = 1;
-//        while (incr <= arr.length / 3)
-//            incr = incr * 3 + 1;
+        int incr = 1;
+        while (incr <= arr.length / 3)
+            incr = incr * 3 + 1;
 
         /* Do bubble sort for each increment. */
         while (incr >= 1) {  
@@ -242,9 +239,7 @@ public class SortCount {
             for (int i = arr.length - 1; i > 0; i -= (passAtIncr * incr)) {
             	int numSwapsThisPass = 0;
                 for (int j = 0; j + incr <= i; j++) {
-                	System.out.println("comparing: " + arr[j] + " " + arr[j+incr]);
                     if (compare(arr[j] > arr[j+incr])) {
-                    	System.out.println("swapping: " + arr[j] + " " + arr[j+incr]);
                     	swap(arr, j, j+incr);
                     	numSwapsThisPass++;
                     }
@@ -254,13 +249,11 @@ public class SortCount {
                 		return;
                 	else
                 		break;
-                	
                 }
             }
 
             // Calculate increment for next pass.
-//            incr = (incr - 1) / 3;     
-            incr = incr/2;
+            incr = (incr - 1) / 3;     
         }
     }	
     /*
@@ -390,40 +383,36 @@ public class SortCount {
     }
 
     public static void main(String args[]) {
-//        int[] a;       // the array
-//        int[] asave;   // a copy of the original unsorted array    	
-        // TEMP:	
-        int[] a = { 20, 7, 14, 18, 2, 30, 6, 23, 11, 5 };         
-        int[] asave = { 20, 7, 14, 18, 2, 30, 6, 23, 11, 5 };         
+        int[] a;       // the array
+        int[] asave;   // a copy of the original unsorted array    	        
         int numItems;
         String arrayType;
 
         /*
          * Get various parameters from the user.
          */
-        // TEMP: removed for testing
-//        Scanner in = new Scanner(System.in);
-//        System.out.print("How many items in the array? ");
-//        numItems = in.nextInt();
-//        in.nextLine();
-//        System.out.print("Random (r), almost sorted (a), or fully sorted (f)? ");
-//        arrayType = in.nextLine();
-//        System.out.println();
-//
-//        /* 
-//         * Create the arrays.   
-//         */
-//        if (arrayType.equalsIgnoreCase("A"))
-//            a = almostSortedArray(numItems);
-//        else {
-//            a = randomArray(numItems);
-//            if (arrayType.equalsIgnoreCase("F"))
-//                quickSort(a);
-//        }
-//        
-//        asave = new int[numItems];
-//        System.arraycopy(a, 0, asave, 0, a.length);
-//        printArray(a);
+        Scanner in = new Scanner(System.in);
+        System.out.print("How many items in the array? ");
+        numItems = in.nextInt();
+        in.nextLine();
+        System.out.print("Random (r), almost sorted (a), or fully sorted (f)? ");
+        arrayType = in.nextLine();
+        System.out.println();
+
+        /* 
+         * Create the arrays.   
+         */
+        if (arrayType.equalsIgnoreCase("A"))
+            a = almostSortedArray(numItems);
+        else {
+            a = randomArray(numItems);
+            if (arrayType.equalsIgnoreCase("F"))
+                quickSort(a);
+        }
+        
+        asave = new int[numItems];
+        System.arraycopy(a, 0, asave, 0, a.length);
+        printArray(a);
 
         /*
          * Try each of the various algorithms, starting each time 
