@@ -229,9 +229,11 @@ public class SortCount {
         /*
          * Borrowing Knuth's sequence via Lafore
          */
-        int incr = 1;
-        while (incr <= arr.length / 3)
-            incr = incr * 3 + 1;
+    	// TEMP:
+    	int incr = 3;
+//        int incr = 1;
+//        while (incr <= arr.length / 3)
+//            incr = incr * 3 + 1;
 
         /* Do bubble sort for each increment. */
         while (incr >= 1) {  
@@ -246,7 +248,8 @@ public class SortCount {
             }
 
             // Calculate increment for next pass.
-            incr = (incr - 1) / 3;        
+//            incr = (incr - 1) / 3;     
+            incr = 1;
         }
     }	
     /*
