@@ -17,18 +17,24 @@ g) 4 10 18 24 33 8 40 3 12
 
 2)
 
-a) 4 comparisons 
+a) 
+4 comparisons 
 Insertion sort starts with the second element,and compares it to the element on its left. 
 Because our array is already sorted, the algorithm will move on to the third element and compare it to the element 
 on it's left, and so on until we reach the end.  
 
-b) 10 comparisons
+b) 
+10 comparisons
 Bubble sort makes N-1 comparisons on the first pass, N-2 comparisons on the second pass,
 etc. so there will be a total of 5*(5-1)/2 comparisons or 10.
 
-c) 12 comparisons
+c) 
+In Theory: 
+12 comparisons
 Quicksort makes N comparisons for each "row" on its tree of partitions, until each sub-array has only one element.
 This gives us O (n log^2 n) comparisons, or 12 in this case.
+In Practice:
+16 comparisons
 
 ==============================================================================
 
@@ -112,7 +118,7 @@ n = 16000       2123513         877566
 
 Results for fully sorted are not averages because it became quickly apparant that the number of comparisons for a given  value n is always the same and the number of moves is always 0.  Results for the fully random array are averages.  
 
-Based on the results from the fully sorted array, the algorithm has a best case speed of 0(n log n).  The number of comparisons is  slightly larger than would be expected for an n log n algorithm (3000 for n = 1000), but still much lower than a quadratic logarithm (1000000 fo n = 1000).
+Based on the results from the fully sorted array, the algorithm has a best case speed of 0(n log n).  The number of comparisons is  slightly smaller than would be expected for an n log n algorithm (9966 for n = 1000).
 
 For a random array, the speed is closer to quadratic, but not quite that slow.  It clocks in between the Shell and Insertion sorts, Shell being O(n^1.5).
 
