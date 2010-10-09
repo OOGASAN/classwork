@@ -64,14 +64,22 @@ public class Intersect {
 	  int k = 0;
 	  int lastJPos = 0;
 	  for (int i = 0; i < smallerArr.length; i++) {
-		  for (int j = lastJPos; j < biggerArr.length; j++) {
-			  if (smallerArr[i] <= biggerArr[j]) {
-				  if (smallerArr[i] == biggerArr[j]) {
-					  arr3[k] = smallerArr[i];
-					  k++;
-					  lastJPos = j;
-					  break;
-				  }			  
+		  // don't check for duplicates 
+		  boolean notDup = true;
+		  if (i > 0) {
+			  if (smallerArr[i] == smallerArr[i-1]) 
+				  notDup = false;
+		  }	  
+		 if (notDup) {
+			  for (int j = lastJPos; j < biggerArr.length; j++) {
+				  if (smallerArr[i] <= biggerArr[j]) {
+					  if (smallerArr[i] == biggerArr[j]) {
+						  arr3[k] = smallerArr[i];
+						  k++;
+						  lastJPos = j;
+						  break;
+					  }			  
+				  }
 			  }
 		  }
 	  }
