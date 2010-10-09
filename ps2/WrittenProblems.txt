@@ -17,13 +17,13 @@ g) 4 10 18 24 33 8 40 3 12
 
 2)
 
-a) 10 comparisons 
-The algorithm starts with the second element,and compares it to the element on the left, 
-then takes the third element and compares it with both elements on its left, and so on,
-so in there will be 5*(5-1)/2 comparisons or 10.
+a) 4 comparisons 
+Insertion sort starts with the second element,and compares it to the element on its left. 
+Because our array is already sorted, the algorithm will move on to the third element and compare it to the element 
+on it's left, and so on until we reach the end.  
 
 b) 10 comparisons
-The algorithm makes N-1 comparisons on the first pass, N-2 comparisons on the second pass,
+Bubble makes N-1 comparisons on the first pass, N-2 comparisons on the second pass,
 etc. so there will be a total of 5*(5-1)/2 comparisons or 10.
 
 c) TODO
@@ -70,5 +70,52 @@ This algorithm runs through the loop and does the main work of the function n ti
 
 ==============================================================================
 5)
+
 ==============================================================================
 6)
+a)
+Expression                  Address     Value
+n                           0x128       0x832            
+n.ch                        0x832       'e'
+n.prev                      0x838       0x180
+n.prev.next                 0x182       0x832
+n.next.prev                 0x262       0x832
+n.next.prev.prev            0x838       0x180
+
+b)
+// assign 'a' node's next to 't'
+m.next = n.next;
+// assign 'a' node's prev to 'e'
+m.prev = n;
+// assign 'e' node's next to 'a'
+n.next = m;
+// assign 't' node's prev to 'a'
+m.next.prev = m;
+
+==============================================================================
+Programmin Problems 3b:
+Results of running the shellBubbleSort algorithm with sorted and unsorted arrays of various sizes:
+fully sorted:   comparisons     moves
+n = 1000        5457            0           
+n = 2000        12364           0 
+n = 4000        27084           0
+n = 8000        59084           0
+n = 16000       129243          0           
+
+random:
+n = 1000        52265           26459       
+n = 2000        131754          63472
+n = 4000        351910          159730 
+n = 8000        876599          373695
+n = 16000       2123513         877566      
+
+Results for fully sorted are not averages because it became quickly apparant that the number of comparisons for a given  value n is always the same and the number of moves is always 0.  Results for the fully random array are averages.  
+
+Based on the results from the fully sorted array, the algorithm has a best case speed of 0(n log n).  The number of comparisons is  slightly larger than would be expected for an n log n algorithm (3000 for n = 1000), but still much lower than a quadratic logarithm (1000000 fo n = 1000).
+
+For a random array, the speed is closer to quadratic, but not quite that slow.  It clocks in between the Shell and Insertion sorts, Shell being O(n^1.5).
+
+
+
+
+
