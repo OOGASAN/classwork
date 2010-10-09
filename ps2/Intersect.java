@@ -61,20 +61,17 @@ public class Intersect {
 		  arr3 = new int[arr2.length];
 	  }
 
-//	  int j = 0;
 	  int k = 0;
+	  int lastJPos = 0;
 	  for (int i = 0; i < smallerArr.length; i++) {
-		  for (int j = 0; j < biggerArr.length; j++) {
+		  for (int j = lastJPos; j < biggerArr.length; j++) {
 			  if (smallerArr[i] <= biggerArr[j]) {
 				  if (smallerArr[i] == biggerArr[j]) {
 					  arr3[k] = smallerArr[i];
 					  k++;
+					  lastJPos = j;
 					  break;
 				  }			  
-	//			  j++;
-//			  } else {
-//			  j++;
-//		  } 
 			  }
 		  }
 	  }
