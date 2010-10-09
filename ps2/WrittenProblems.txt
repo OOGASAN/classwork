@@ -23,11 +23,12 @@ Because our array is already sorted, the algorithm will move on to the third ele
 on it's left, and so on until we reach the end.  
 
 b) 10 comparisons
-Bubble makes N-1 comparisons on the first pass, N-2 comparisons on the second pass,
+Bubble sort makes N-1 comparisons on the first pass, N-2 comparisons on the second pass,
 etc. so there will be a total of 5*(5-1)/2 comparisons or 10.
 
-c) TODO
-
+c) 12 comparisons
+Quicksort makes N comparisons for each "row" on its tree of partitions, until each sub-array has only one element.
+This gives us O (n log^2 n) comparisons, or 12 in this case.
 
 ==============================================================================
 
