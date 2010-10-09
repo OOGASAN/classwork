@@ -22,7 +22,7 @@
  * altering the original array.
  */
 public class Sort {
-    public static final int NUM_ELEMENTS = 9;
+    public static final int NUM_ELEMENTS = 5;
     
     public static int mergeCount = 0;
 
@@ -229,7 +229,7 @@ public class Sort {
 //        printArray(orig);
 
 
-  int[] orig = {10, 18, 4, 24, 33, 40, 8, 3, 12};
+    	int[] orig = {1,2,3,4,5};
 
         int[] copy = new int[NUM_ELEMENTS];
 
