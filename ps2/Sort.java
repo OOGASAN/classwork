@@ -1,4 +1,4 @@
-/*
+  /*
  * Sort.java
  *
  * Computer Science E-119, Harvard University
@@ -22,7 +22,9 @@
  * altering the original array.
  */
 public class Sort {
-    public static final int NUM_ELEMENTS = 10;
+    public static final int NUM_ELEMENTS = 9;
+    
+    public static int mergeCount = 0;
 
     /*
      * swap - swap the values of two variables.
@@ -51,7 +53,7 @@ public class Sort {
 
     /** selectionSort */
     public static void selectionSort(int[] arr) {
-        for (int i = 0; i < arr.length - 1; i++) {
+        for (int i = 0; i < 2; i++) {
             int j = indexSmallest(arr, i, arr.length - 1);
             swap(arr, i, j);
         }
@@ -59,7 +61,7 @@ public class Sort {
 
     /** insertionSort */
     public static void insertionSort(int[] arr) {
-        for (int i = 1; i < arr.length; i++) {
+        for (int i = 1; i < 4; i++) {
             if (arr[i] < arr[i-1]) {
                 // Save a copy of the element to be inserted.
                 int toInsert = arr[i];
@@ -83,13 +85,14 @@ public class Sort {
          * Find initial increment: one less than the largest
          * power of 2 that is <= the number of objects.
          */
-        int incr = 1;
-        while (2 * incr <= arr.length)
-            incr = 2 * incr;
-        incr = incr - 1;
+//        int incr = 1;
+//        while (2 * incr <= arr.length)
+//            incr = 2 * incr;
+//        incr = incr - 1;
+  int incr = 3;
 
         /* Do insertion sort for each increment. */
-        while (incr >= 1) {
+        while (incr == 3) {
             for (int i = incr; i < arr.length; i++) {
                 if (arr[i] < arr[i-incr]) {
                     int toInsert = arr[i];
@@ -112,7 +115,7 @@ public class Sort {
 
     /** bubbleSort */
     public static void bubbleSort(int[] arr) {
-        for (int i = arr.length - 1; i > 0; i--) {
+        for (int i = arr.length - 1; i > arr.length - 4; i--) {
             for (int j = 0; j < i; j++) {
                 if (arr[j] > arr[j+1])
                     swap(arr, j, j+1);
@@ -190,6 +193,13 @@ public class Sort {
         mSort(arr, tmp, start, middle);
         mSort(arr, tmp, middle + 1, end);
         merge(arr, tmp, start, middle, middle + 1, end);
+        if (mergeCount < 4) {
+            mergeCount++;
+        } else {
+            System.out.print("merged 4 times: ");
+            printArray(arr);
+            System.exit(0);
+        }    
     }
     
     /** mergesort */
@@ -212,11 +222,14 @@ public class Sort {
     }
 
     public static void main(String[] arr) { 
-        int[] orig = new int[NUM_ELEMENTS];
-        for (int i = 0; i < NUM_ELEMENTS; i++) {
-            orig[i] = (int)(50 * Math.random());
-        }
-        printArray(orig);
+//        int[] orig = new int[NUM_ELEMENTS];
+//        for (int i = 0; i < NUM_ELEMENTS; i++) {
+//            orig[i] = (int)(50 * Math.random());
+//        }
+//        printArray(orig);
+
+
+  int[] orig = {10, 18, 4, 24, 33, 40, 8, 3, 12};
 
         int[] copy = new int[NUM_ELEMENTS];
 
