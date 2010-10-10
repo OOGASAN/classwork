@@ -77,6 +77,7 @@ This algorithm runs through the loop and does the main work of the function n ti
 
 ==============================================================================
 5)
+Could not find an example of selection sort being unstable.
 
 ==============================================================================
 6)

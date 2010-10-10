@@ -71,7 +71,7 @@ public class Intersect {
 				  notDup = false;
 		  }	  
 		 if (notDup) {
-			  for (int j = lastJPos; j < biggerArr.length; j++) {
+			  for (int j = lastJPos + 1; j < biggerArr.length; j++) {
 				  if (smallerArr[i] <= biggerArr[j]) {
 					  if (smallerArr[i] == biggerArr[j]) {
 						  arr3[k] = smallerArr[i];
