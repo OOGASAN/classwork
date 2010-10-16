@@ -279,13 +279,22 @@ public class StringNode {
         if (str == null)
             return null;
         
-        StringNode removedFromRest = removeAllSpaces(str.next);
-        if (str.ch == ' ')
-            return removedFromRest;
-        else {
-            str.next = removedFromRest;
-            return str;
+//        StringNode removedFromRest = removeAllSpaces(str.next);
+//        if (str.ch == ' ')
+//            return removedFromRest;
+//        else {
+//            str.next = removedFromRest;
+//            return str;
+//        }
+        StringNode trav = str;
+        while (trav.next != null) {
+        	if (trav.next.ch == ' ') {
+        		trav.next = trav.next.next;
+        	} 
+        	trav = trav.next;
         }
+        // TODO: remove trailing space
+        return str;
     }
     
     /**
