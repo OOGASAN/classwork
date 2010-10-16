@@ -212,10 +212,12 @@ public class StringNode {
      * linked-list string to which str refers
      */
     public static int length(StringNode str) {
-        if (str == null)
-            return  0;
-        else
-            return 1 + length(str.next);
+    	int i = 0;
+    	while (getNode(str, i) != null) {
+    		i++;
+    	}
+    	
+    	return i;
     }
 
     /**

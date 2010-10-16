@@ -4,3 +4,4 @@ fill in notes in coursepack
 fill in stuff from lecture (code)
 figure out inductive reasoning problem before checking it on ps1 solutions
 review ps1
+checkout sorting algorithm demoes online, including other ones in class resourses
