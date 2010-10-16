@@ -36,12 +36,20 @@ public class StringNode {
      * short, returns null.
      */
     private static StringNode getNode(StringNode str, int i) {
-        if (i < 0 || str == null)
-            return null;
-        else if (i == 0)
-            return str;
-        else
-            return getNode(str.next, i-1);
+    	if (str == null)    	
+    		return null;
+    	else {
+    		StringNode trav = str;
+    		int j = 0;
+    		while(trav != null) {
+    			if (j == i)
+    				return trav;
+    			j++;
+    			trav = trav.next;
+    		}
+    		// if we've gotten here, string is too short, return null
+    		return null;
+    	}
     }
 
     /*****************************************************
