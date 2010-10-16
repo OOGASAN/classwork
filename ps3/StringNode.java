@@ -119,6 +119,11 @@ public class StringNode {
         StringNode copyFirst = new StringNode(str.ch, null);
         copyFirst.next = copy(str.next);
         return copyFirst;
+ 
+//        The trick here is to keep one reference to the
+//        beginning of the string and another reference to the place into which a
+//        new character is being inserted.
+
     }
 
     /**
@@ -278,23 +283,25 @@ public class StringNode {
     public static StringNode removeAllSpaces(StringNode str) {
         if (str == null)
             return null;
-
+        
+        // handle if first char is a space       
         if (str.ch == ' ')
         	str = str.next;
-        StringNode trav = str;
         
-        while (trav.next != null) {
-        	if (trav.next.ch == ' ') {
-        		if (trav.next.next != null)
-        			trav.next = trav.next.next;
-        		// remove trailing space
-        		// BUG: does not remove more than one trailing space...        		
-        		else
-        			trav.next = null;
-        			break;
-        	} 
+        StringNode trav = str;
+        StringNode trail = null;
+         
+        while (trav != null) {
+        	if (trav.ch == ' ')
+        		trail.next = trav.next;
+        	trail = trav;
         	trav = trav.next;
         }
+        
+        // handle if last char is a space
+        if (trail.ch == ' ')
+        	trail = null;
+        
         return str;
     }
     
