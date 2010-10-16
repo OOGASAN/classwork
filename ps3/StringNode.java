@@ -141,17 +141,13 @@ public class StringNode {
      * none, returns -1.
      */
     public static int indexOf(StringNode str, char ch) {
-        if (str == null)         // base case 1: ch wasn't found
-            return -1;
-        else if (str.ch == ch)   // base case 2: ch was just found
-            return 0;           
-        else {
-            int indexInRest = indexOf(str.next, ch);
-            if (indexInRest == -1)
-                return -1;
-            else 
-                return 1 + indexInRest;
-        }
+       	int i = 0;
+    	while(getNode(str, i) != null) {
+    		if (charAt(str, i) == ch)
+    			return i;
+    		i++;
+    	}
+    	return -1;
     }
 
     /**
