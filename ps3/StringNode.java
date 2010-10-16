@@ -299,8 +299,10 @@ public class StringNode {
         }
         
         // handle if last char is a space
-        if (trail.ch == ' ')
-        	trail = null;
+        if (trail != null) {
+	        if (trail.ch == ' ')
+	        	trail = null;
+        }
         
         return str;
     }
