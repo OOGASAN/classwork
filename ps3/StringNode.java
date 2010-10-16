@@ -278,22 +278,23 @@ public class StringNode {
     public static StringNode removeAllSpaces(StringNode str) {
         if (str == null)
             return null;
-        
-//        StringNode removedFromRest = removeAllSpaces(str.next);
-//        if (str.ch == ' ')
-//            return removedFromRest;
-//        else {
-//            str.next = removedFromRest;
-//            return str;
-//        }
+
+        if (str.ch == ' ')
+        	str = str.next;
         StringNode trav = str;
+        
         while (trav.next != null) {
         	if (trav.next.ch == ' ') {
-        		trav.next = trav.next.next;
+        		if (trav.next.next != null)
+        			trav.next = trav.next.next;
+        		// remove trailing space
+        		// BUG: does not remove more than one trailing space...        		
+        		else
+        			trav.next = null;
+        			break;
         	} 
         	trav = trav.next;
         }
-        // TODO: remove trailing space
         return str;
     }
     
