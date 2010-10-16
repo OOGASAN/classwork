@@ -2,14 +2,14 @@
 
 
 fully sorted:   comparisons     moves       n log n     n^2
-n = 1000        5457            0          3000         1000000       compare to merge c(5048) m(5044) and shell c(7987)
+n = 1000        5457            0          9966         1000000       compare to merge c(5048) m(5044) and shell c(7987)
 *2              2.25
 n = 2000        12364           0 
 *4              5
 n = 4000        27084           0
 n = 8000        59084           0
 *16              24
-n = 16000       129243          0          67266        256000000     compare to merge c(113574) m(447232) and shell c(191631)
+n = 16000       129243          0          223452        256000000     compare to merge c(113574) m(447232) and shell c(191631)
 
 
 
