@@ -235,12 +235,13 @@ public class StringNode {
      * print - recursively writes the specified linked-list string to System.out
      */
     public static void print(StringNode str) {
-        if (str == null)
+    	if (str == null)
             return;
         else {
-            System.out.print(str.ch);
-            print(str.next);
+        	for (int i = 0; i < length(str); i++) 
+        		System.out.print(charAt(str, i));        	
         }
+
     }
 
     /**
