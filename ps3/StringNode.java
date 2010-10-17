@@ -77,6 +77,7 @@ public class StringNode {
     /**
      * concat - returns the concatenation of two linked-list strings
      */
+    // TODO
     public static StringNode concat(StringNode str1, StringNode str2) {
         StringNode cat;
 
@@ -112,6 +113,7 @@ public class StringNode {
     /**
      * copy - returns a copy of the given linked-list string
      */
+    // TODO
     public static StringNode copy(StringNode str) {
         if (str == null)
             return null;
@@ -123,7 +125,16 @@ public class StringNode {
 //        The trick here is to keep one reference to the
 //        beginning of the string and another reference to the place into which a
 //        new character is being inserted.
-
+        
+//        StringNode copyFirst = new StringNode(str.ch, null);
+//        StringNode trav = str;
+//        
+//        while (trav != null) {
+//        	
+//        	trav = trav.next;
+//        }
+//
+//        return copyFirst;
     }
 
     /**
@@ -313,6 +324,7 @@ public class StringNode {
      * the string str are replaced by newChar. This method does *not* modify
      * the original list.
      */
+    // TODO
     public static StringNode replace(StringNode str, char oldChar, char newChar) {
         if (str == null)
             return null;
