@@ -2,6 +2,9 @@ figure out math for section 4, problem 3
 rewatch quicksort analysis - figure out math (p.76)
 fill in notes in coursepack
 fill in stuff from lecture (code)
-figure out inductive reasoning problem before checking it on ps1 solutions
-review ps1
+x figure out inductive reasoning problem before checking it on ps1 solutions
+x review ps1
 checkout sorting algorithm demoes online, including other ones in class resourses
+Tuesday night, rewatch sorting lectures and fill in code
+Print:
+    solutions PS2 for sorting examples

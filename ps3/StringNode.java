@@ -2,7 +2,7 @@
  * StringNode.java
  *
  * Author:          Computer Science E-119
- * Modified by:     <your name>, <your e-mail address>
+ * Modified by:     Sam Tymorek, samtymorek@hotmail.com
  */
 
 import java.io.*;
