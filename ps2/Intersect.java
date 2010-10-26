@@ -1,4 +1,4 @@
-public class Intersect {
+	public class Intersect {
     
 //    public static int[] intersect(int[] arr1, int[] arr2) {
 //        Sort.quickSort(arr1);
