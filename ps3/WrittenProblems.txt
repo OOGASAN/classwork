@@ -1,0 +1,25 @@
+Written Problems
+1)
+TODO: prove this
+Appears to be no difference in these algorithms efficiency
+
+
+=======================================================================
+
+2)
+
+static fillPrevs(DNode list) {
+	DNode trav = list;
+	DNode trail;
+	
+	trav.prev = null;
+	trav = trav.next;
+	
+	while (trav != null) {
+		trav.prev = trail;	
+		trail = trav;
+		trav = trav.next;
+	}		
+}	
+
+=======================================================================
