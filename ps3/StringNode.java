@@ -77,14 +77,15 @@ public class StringNode {
     /**
      * concat - returns the concatenation of two linked-list strings
      */
-    // TODO
     public static StringNode concat(StringNode str1, StringNode str2) {
+        // if either Node is null we return the other StringNode, if both are null, we return null
         if (str1 == null)
             return str2;
         
         if (str2 == null)
             return str1;
         
+        // didn't see the need for iteration here...
         StringNode cat = copy(str1);
         getNode(cat, length(cat) - 1).next = copy(str2);
         
@@ -321,19 +322,32 @@ public class StringNode {
      * the string str are replaced by newChar. This method does *not* modify
      * the original list.
      */
-    // TODO
-    public static StringNode replace(StringNode str, char oldChar, char newChar) {
+    public static StringNode replace(StringNode str, char oldChar, char newChar) {        
         if (str == null)
-            return null;
+            throw new IllegalArgumentException("string is empty");    
         
+        StringNode trav = str;
         StringNode copyFirst;
-        if (str.ch == oldChar)
+        // check first char outside of loop in order to keep reference to first StringNode
+        if (str.ch == oldChar) 
             copyFirst = new StringNode(newChar, null);
         else
-            copyFirst = new StringNode(str.ch, null);
+            copyFirst = new StringNode(str.ch, null) ;                      
+        StringNode copyPrev = copyFirst;
+        StringNode copyNext;
         
-        copyFirst.next = replace(str.next, oldChar, newChar);
-        return copyFirst;
+        while (trav.next != null) {
+            trav = trav.next;
+            if (trav.ch == oldChar)
+                copyNext = new StringNode(newChar, null);
+            else    
+                copyNext = new StringNode(trav.ch, null);
+            copyPrev.next = copyNext;
+            copyPrev = copyNext;
+        }
+        
+        return copyFirst;        
+        
     }
     
     /*
