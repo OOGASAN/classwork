@@ -79,13 +79,15 @@ public class StringNode {
      */
     // TODO
     public static StringNode concat(StringNode str1, StringNode str2) {
-        StringNode cat;
-
         if (str1 == null)
-            cat = copy(str2);
-        else 
-            cat = new StringNode(str1.ch, concat(str1.next, str2));
-
+            return str2;
+        
+        if (str2 == null)
+            return str1;
+        
+        StringNode cat = copy(str1);
+        getNode(cat, length(cat) - 1).next = copy(str2);
+        
         return cat;
     }
 
@@ -113,29 +115,9 @@ public class StringNode {
     /**
      * copy - returns a copy of the given linked-list string
      */
-    // TODO
-    public static StringNode copy(StringNode str) {
-//        if (str == null)
-//            return null;
-//
-//        StringNode copyFirst = new StringNode(str.ch, null);
-//        copyFirst.next = copy(str.next);
-//        return copyFirst;
- 
-//        The trick here is to keep one reference to the
-//        beginning of the string and another reference to the place into which a
-//        new character is being inserted.
-        
-//        StringNode copyFirst = new StringNode(str.ch, null);
-//        StringNode trav = str;
-//        
-//        while (trav != null) {
-//        	
-//        	trav = trav.next;
-//        }
-//
-//        return copyFirst;
-        
+    public static StringNode copy(StringNode str) { 
+        if (str == null)
+            throw new IllegalArgumentException("string is empty");        
         StringNode trav = str;
         StringNode copyFirst = new StringNode(str.ch, null);
         StringNode copyPrev = copyFirst;
