@@ -115,12 +115,12 @@ public class StringNode {
      */
     // TODO
     public static StringNode copy(StringNode str) {
-        if (str == null)
-            return null;
-
-        StringNode copyFirst = new StringNode(str.ch, null);
-        copyFirst.next = copy(str.next);
-        return copyFirst;
+//        if (str == null)
+//            return null;
+//
+//        StringNode copyFirst = new StringNode(str.ch, null);
+//        copyFirst.next = copy(str.next);
+//        return copyFirst;
  
 //        The trick here is to keep one reference to the
 //        beginning of the string and another reference to the place into which a
@@ -135,6 +135,21 @@ public class StringNode {
 //        }
 //
 //        return copyFirst;
+        
+        StringNode trav = str;
+        StringNode copyFirst = new StringNode(str.ch, null);
+        StringNode copyPrev = copyFirst;
+        StringNode copyNext;
+        
+        while (trav.next != null) {
+            trav = trav.next;
+            copyNext = new StringNode(trav.ch, null);
+            copyPrev.next = copyNext;
+            copyPrev = copyNext;
+        }
+        
+        return copyFirst;
+        
     }
 
     /**
@@ -228,7 +243,7 @@ public class StringNode {
     }
 
     /**
-     * length - recursively determines the number of characters in the
+     * length - iteratively determines the number of characters in the
      * linked-list string to which str refers
      */
     public static int length(StringNode str) {
@@ -256,7 +271,7 @@ public class StringNode {
     }
 
     /**
-     * print - recursively writes the specified linked-list string to System.out
+     * print - iteratively writes the specified linked-list string to System.out
      */
     public static void print(StringNode str) {
     	if (str == null)

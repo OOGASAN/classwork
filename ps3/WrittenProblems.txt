@@ -23,3 +23,30 @@ static fillPrevs(DNode list) {
 }	
 
 =======================================================================
+
+3)
+
+static removeSmallest(IntNode head) {
+	if (head == null || head.next == null)
+		throw new IllegalArgumentException()
+	
+	IntNode trav = head.next; // start with trav here so we don't return dummy node
+	IntNode travPrev = head;
+	
+	IntNode smallest = trav;
+	IntNode smallestPrev = travPrev;
+	
+	while (trav != null) {
+		if (trav.val < smallest.val) {
+			smallest = trav;
+			smallest.prev = trav.prev;
+		}		
+		travPrev = trav;
+		trav = trav.next;
+	}	
+	// remove smallest from list
+	smallestPrev.next = smallest.next;
+	
+	// return value of smallest
+	return smallest.val;
+}	
