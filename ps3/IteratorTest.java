@@ -2,7 +2,7 @@
  * IteratorTest.java
  *
  * Author:          Computer Science E-119
- * Modified by:     <your name>, <your e-mail address>
+ * Modified by:     Sam Tymorek, samtymorek@hotmail.com
  */
 
 public class IteratorTest {
@@ -20,7 +20,7 @@ public class IteratorTest {
     } 
     
     public static void main(String[] args) {
-        List list = new LLList();
+        List list = new ArrayList(6);
         
         list.addItem("a", 0);
         list.addItem("b", 0);

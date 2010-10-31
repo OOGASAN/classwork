@@ -2,7 +2,7 @@
  * ArrayList.java
  *
  * Author:          Computer Science E-119
- * Modified by:     <your name>, <your e-mail address>
+ * Modified by:     Sam Tymorek, samtymorek@hotmail.com
  */
 
 import java.util.*;
@@ -109,12 +109,34 @@ public class ArrayList implements List {
      */
     public ListIterator iterator() {
         // still needs to be implemented
-        return null;
+        return new ArrayListIterator();
     }
     
     /*
      *** Implement your private inner class for an iterator
      *** over an ArrayList below.
      */
+    private class ArrayListIterator implements ListIterator {
+        private int curIndex;
+        
+        public ArrayListIterator() {
+            curIndex = 0;
+        }
+        
+        public boolean hasNext() {
+            return (curIndex < length);
+        }
+        
+        public Object next() {
+            if (curIndex >= length)
+                throw new NoSuchElementException();
+            
+            Object obj = items[curIndex];
+            curIndex++;
+            
+            return obj;
+        }
+    }
+    
     
 }
