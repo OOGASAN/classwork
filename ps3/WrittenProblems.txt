@@ -55,8 +55,36 @@ static removeSmallest(IntNode head) {
 
 4)
 
-TODO
+class QueueStack {
+	Queue q1;
+	Queue q2;
+	
+	push(item) {
+		// put any items that are on q1 onto q2 in FIFO order
+		while (!q1.isEmpty) 
+			q2.insert(q1.remove())		
+		// insert [item] on q1
+		q1.insert(item);
+		// reinserting items on q1 this way allows them to be accessed in FILO order	
+		while (!q2.isEmpty)
+			q1.insert(q2.remove())
+	}		
+			
+	pop() {
+		// removes first item on q1, which is actually the most recent item to be added to QueueStack
+		q1.remove();
+	}
+	peek() {
+		// return value without removing item
+		q1.peek();
+	}		
+}  
 
+Analysis:
+Pop and peek occur in O(1) time because they each take only one operation now matter how large the
+data set becomes.
+Push occurs in O(n) time.  Both queues are looped through twice, which takes 2n moves, however, since 2 
+is a constant, we don't consider it.
 
 =======================================================================
 
