@@ -1,7 +1,7 @@
 Written Problems
 1)
-TODO: prove this
-Appears to be no difference in these algorithms efficiency
+Appears to be no difference in these algorithms' efficiency:
+both loops step through the entire list
 
 
 =======================================================================
@@ -70,9 +70,9 @@ class QueueStack {
 			q1.insert(q2.remove())
 	}		
 			
-	pop() {
+	Object pop() {
 		// removes first item on q1, which is actually the most recent item to be added to QueueStack
-		q1.remove();
+		return q1.remove();
 	}
 	peek() {
 		// return value without removing item
@@ -81,16 +81,45 @@ class QueueStack {
 }  
 
 Analysis:
-Pop and peek occur in O(1) time because they each take only one operation now matter how large the
+Pop() and peek() occur in O(1) time because they each take only one operation now matter how large the
 data set becomes.
-Push occurs in O(n) time.  Both queues are looped through twice, which takes 2n moves, however, since 2 
+Push() occurs in O(n) time.  Both queues are looped through twice, which takes 2n moves. However, since 2 
 is a constant, we don't consider it.
 
 =======================================================================
 
 5)
 
-TODO
+static DNode reverse(DNode first) {
+	DNode trav = frist;
+	DNode trail = null;
+	
+	// step through the list
+	// don't allow trav to be set to null
+	while (trav.next != null) {
+		trav = trav;
+		trav = trav.next;		
+	}	
+	
+	// set first to the "last" node in the list
+	first = trav;
+	// set trav up to be "first" node of reversed list
+	trav.next = trail;
+	trav.prev = null;
+	// swap trav and trail, using var first
+	trav = trail;
+	trail = first;
+	
+	// step through list backwards, reversing references
+	while (trav != null) {
+		trav.next = trav.prev;
+		trav.prev = trail;
+		trail = trav;
+		trav = trav.next;	
+	}
+	
+	return first;
+}	
 
 
 
