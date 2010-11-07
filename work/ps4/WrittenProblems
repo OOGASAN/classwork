@@ -1,0 +1,50 @@
+Sam Tymorek
+samtymorek@hotmail.com
+
+
+Written Problems
+
+1)
+a)
+475  475  475  4_5  475  475	  
+3_1  _31  31_  371  321  3_1
+628	 628  628  628  6_8  628
+   
+b) 
+475  475  475  _75  475  475     
+3_1  _31  3_1  431  631  31_
+628  628  628  628  _28  628
+   
+c)     
+475	 475  475  475  4_5  475
+3_1  3_1  _31  31_  371  321
+628  628  628  628  628  6_8
+
+
+============================================
+
+2)
+a)
+O(n)
+This algorithm visits every node in the tree and compares it to a running max value.
+It is basically a traversal of the treee.  This type of algorithm will always grow 
+in porpotion to the size of the data set.
+
+b)
+private static int maxKeyTree(Node root) {
+	Node current, last;
+	current = root;
+	while (current != null) {
+		last = current;
+		current = current.right;	
+	}		
+	return last.key;
+}	
+
+c)
+The time complexity of this algorithm in both best and worst case scenarios is O(h) where h 
+is the height of the tree.
+As illustrated in class, the "best worst case" time complexity of this algorithm is if we 
+have a balaned tree, in which case the time complexity is O(log^2 n), because at each level of the
+tree, we cut the size of the problem in half.  The "worst worst case" scenario is if the tree is
+actually a linked list, in which case we will get O(n) or linear time.  
