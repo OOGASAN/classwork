@@ -48,3 +48,63 @@ As illustrated in class, the "best worst case" time complexity of this algorithm
 have a balaned tree, in which case the time complexity is O(log^2 n), because at each level of the
 tree, we cut the size of the problem in half.  The "worst worst case" scenario is if the tree is
 actually a linked list, in which case we will get O(n) or linear time.  
+
+
+============================================
+
+3)     - easier to draw ascii trees this way, I think!
+Right
+^
+|
+|
+V
+Left
+ 
+a)
+
+            M 
+           /
+          /
+         B
+        / \   F
+       /   \ /
+      /     L
+     C
+    /
+   /
+  /
+ /
+Q 
+ \       H
+  \     / \
+   \   /   \
+    \ /     K
+     A 
+      \
+       \
+        \
+         I
+ 
+ 
+ 
+ 
+b)
+
+         J
+        /
+       E
+      / \
+     /   H 
+    D    
+   / \
+  /   \          
+ /     G        
+B              
+ \     C         
+  \   / \         
+   \ /   I        
+    A         
+     \         
+      \        
+       F       
+              
