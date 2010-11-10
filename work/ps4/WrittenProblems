@@ -52,59 +52,69 @@ actually a linked list, in which case we will get O(n) or linear time.
 
 ============================================
 
-3)     - easier to draw ascii trees this way, I think!
-Right
-^
-|
-|
-V
-Left
+3)    
  
 a)
-
-            M 
-           /
-          /
-         B
-        / \   F
-       /   \ /
-      /     L
-     C
-    /
-   /
-  /
- /
-Q 
- \       H
-  \     / \
-   \   /   \
-    \ /     K
-     A 
-      \
-       \
-        \
-         I
- 
- 
+          Q
+         / \
+        /   \
+       /     \
+      /       \
+     A         C
+    / \         \
+   /   \         \
+  /     \         \
+  I      H         B
+        /         / \
+       /         /   \
+       K        L     M
+                 \
+                  F    
  
  
 b)
+            B
+           / \
+          /   \
+         /     \
+        A       D
+       / \     / \
+      /   \   /   \
+     F     C G     E
+          /       / \
+         I       H   J
+              
+              
+              
+==================================================              
+              
+4)
+a)
 
-         J
-        /
-       E
-      / \
-     /   H 
-    D    
-   / \
-  /   \          
- /     G        
-B              
- \     C         
-  \   / \         
-   \ /   I        
-    A         
-     \         
-      \        
-       F       
+           X
+          / \               
+         i   X
+            / \
+           d   X
+              / \
+             e   X
+                / \
+               l   f
+              
+              
+b)
+11110110111010
+
+because:
+1111 - f 
+0 - i 
+110 - e 
+1110 - l
+10 - d                       
+              
+              
+              
+              
+              
+              
               
