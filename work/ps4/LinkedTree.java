@@ -293,7 +293,7 @@ public class LinkedTree {
     }
 
     /** Returns an inorder iterator for this tree. */
-    public LinkedTreeIterator inorderIterator() {
+    public LinkedTreeIterator postorderIterator() {
         /*** implement this method for PS 4 ***/
 
         return null;
@@ -370,6 +370,7 @@ public class LinkedTree {
         tree.inorderPrint();
         System.out.println();
 
+        /**************************************
         System.out.print("\nkey to search for: ");
         int key = in.nextInt();
         in.nextLine();
@@ -399,8 +400,16 @@ public class LinkedTree {
         System.out.print("  inorder: ");
         tree.inorderPrint();
         System.out.println();
+         *********************************************/
         
         // test numEvenKeys() method
-        System.out.print(tree.numEvenKeys());
+        System.out.println("Number of even keys in tree: " + tree.numEvenKeys());
+        
+        LinkedTreeIterator preIter = tree.preorderIterator();
+        System.out.print("Printing out using pre-order iterator: ");        
+        while (preIter.hasNext()) {
+            System.out.print(preIter.next() + " ");
+        }
+        System.out.println();        
     }
 }
