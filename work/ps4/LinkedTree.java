@@ -155,12 +155,16 @@ public class LinkedTree {
 
         // Insert the new node.
         Node newNode = new Node(key, data);
-        if (parent == null) // the tree was empty
+        if (parent == null) {// the tree was empty
             root = newNode;
-        else if (key < parent.key)
+            return;            
+        } else if (key < parent.key) {
             parent.left = newNode;
-        else
-            parent.right = newNode;
+        } else {
+            parent.right = newNode;        
+        }
+        // initialize reference to parent node on this new node
+        newNode.parent = parent;            
     }
 
     /**
