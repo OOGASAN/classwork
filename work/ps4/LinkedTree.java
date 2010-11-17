@@ -373,11 +373,19 @@ public class LinkedTree {
         }    
         
         public boolean hasNext() {
-            return false;
+            return (nextNode != null);
         }
         
         public int next() {
             int key = nextNode.key;
+            
+            if (nextNode.parent.right != null) {
+                if (nextNode.parent.right != nextNode) {
+                    nextNode = nextNode.parent.right;
+                } else {
+                    nextNode = nextNode.parent;
+                }
+            }
             
             return key;
         }
