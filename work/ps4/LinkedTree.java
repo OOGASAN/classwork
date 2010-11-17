@@ -300,7 +300,7 @@ public class LinkedTree {
     public LinkedTreeIterator postorderIterator() {
         /*** implement this method for PS 4 ***/
 
-        return null;
+        return new PostorderIterator();
     }
 
     /*** inner class for a preorder iterator ***/
@@ -349,7 +349,41 @@ public class LinkedTree {
             return key;
         }
     }
+    
+    /*** inner class for a preorder iterator ***/
+    private class PostorderIterator implements LinkedTreeIterator {
+        private Node nextNode;
 
+        private PostorderIterator() {
+            // The traversal starts with a leaf node.
+            Node trav = root;
+            Node trail = null;
+            
+            while (trav != null) {
+                trail = trav;
+                if (trav.left != null)
+                    trav = trav.left;
+                else if (trav.right != null) 
+                    trav = trav.right;
+                else
+                    trav = null;
+            }
+            
+            nextNode = trail;
+        }    
+        
+        public boolean hasNext() {
+            return false;
+        }
+        
+        public int next() {
+            int key = nextNode.key;
+            
+            return key;
+        }
+    }
+    
+    
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
@@ -366,15 +400,30 @@ public class LinkedTree {
         tree.preorderPrint();
         System.out.println();
 
+        // testing that parent fields are set by running the PreorderIterator
+        LinkedTreeIterator preIter = tree.preorderIterator();
+        System.out.print("Printing out using pre-order iterator: ");        
+        while (preIter.hasNext()) {
+            System.out.print(preIter.next() + " ");
+        }
+        System.out.println();          
+        
         System.out.print("postorder: ");
         tree.postorderPrint();
         System.out.println();
 
+        // testing PostOrderIterator
+        LinkedTreeIterator postIter = tree.postorderIterator();
+        System.out.print("Printing out using pre-order iterator: ");        
+        while (postIter.hasNext()) {
+            System.out.print(postIter.next() + " ");
+        }
+        System.out.println();        
+        
         System.out.print("  inorder: ");
         tree.inorderPrint();
         System.out.println();
 
-        /**************************************
         System.out.print("\nkey to search for: ");
         int key = in.nextInt();
         in.nextLine();
@@ -397,23 +446,31 @@ public class LinkedTree {
         tree.preorderPrint();
         System.out.println();
 
-        System.out.print("postorder: ");
-        tree.postorderPrint();
-        System.out.println();
-
-        System.out.print("  inorder: ");
-        tree.inorderPrint();
-        System.out.println();
-         *********************************************/
-        
-        // test numEvenKeys() method
-        System.out.println("Number of even keys in tree: " + tree.numEvenKeys());
-        
-        LinkedTreeIterator preIter = tree.preorderIterator();
+        preIter = tree.preorderIterator();
         System.out.print("Printing out using pre-order iterator: ");        
         while (preIter.hasNext()) {
             System.out.print(preIter.next() + " ");
         }
-        System.out.println();        
+        System.out.println();
+
+        System.out.print("postorder: ");
+        tree.postorderPrint();
+        System.out.println();
+
+        // testing PostOrderIterator
+      postIter = tree.postorderIterator();
+      System.out.print("Printing out using pre-order iterator: ");        
+      while (postIter.hasNext()) {
+          System.out.print(postIter.next() + " ");
+      }
+      System.out.println();               
+        
+        System.out.print("  inorder: ");
+        tree.inorderPrint();
+        System.out.println();
+        
+        // test numEvenKeys() method
+        System.out.println("Number of even keys in tree: " + tree.numEvenKeys());
+            
     }
 }
