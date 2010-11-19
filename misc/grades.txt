@@ -10,11 +10,11 @@ Midterm 					29/50			58
 
 
 PS3 Programming 2,3         29.5/30         90
-
+PS3 WP                      36/40           90
 
 avg so far - 
-HW(75) - 87
-MT(25) - 58
+HW(.75) - 90
+MT(.25) - 58
 
-79.75
+82
 
