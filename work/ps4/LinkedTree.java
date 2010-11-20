@@ -290,18 +290,6 @@ public class LinkedTree {
 		/*** implement this method for PS 4 ***/
 
 	}
-	
-	//TODO: move
-	private Node minKeyTree(Node root) {
-		Node current;
-		Node last = null;
-		current = root;
-		while(current != null) {
-			last = current;
-			current = current.left;
-		}
-		return last;
-	}
 
 	/** Returns a preorder iterator for this tree. */
 	public LinkedTreeIterator preorderIterator() {
@@ -367,29 +355,33 @@ public class LinkedTree {
 		private Node nextNode;
 
 		private PostorderIterator() {
-			// find a leaf node from the deepest level, giving preference to a left node
-		    // this will be the first node visited by the traversal
-		    Node trav = root;
-			Node trail = null;
-
-			while (trav != null) {
-				trail = trav;
-				if (trav.left != null)
-					trav = trav.left;
-				else if (trav.right != null)
-					trav = trav.right;
-				else
-					trav = null;
-			}
-
-			// set nextNode to the leaf node found above 
-			nextNode = trail;
+			// use helper method to get the first node to visit during traversal
+		    nextNode = getDeepLeftLeaf(root);
 		}
 
 		public boolean hasNext() {
 			return (nextNode != null);
 		}
 
+		/*
+		 * Helper method that finds a leaf node from the deepest level of a tree, giving preference to a left node
+		 */
+		private Node getDeepLeftLeaf(Node root) {
+            Node trav = root;
+            Node trail = null;
+
+            while (trav != null) {
+                trail = trav;
+                if (trav.left != null)
+                    trav = trav.left;
+                else if (trav.right != null)
+                    trav = trav.right;
+                else
+                    trav = null;
+            }            
+            return trail;		    
+		}
+		
 		public int next() {
             if (nextNode == null)
                 throw new NoSuchElementException();
@@ -400,26 +392,17 @@ public class LinkedTree {
 			    // if nextNode does not have a parent
 			    // we've reached the root of the tree, set nextNode to null
 			    nextNode = null;
-		    } else if (nextNode.parent.right != null) {
-				if (nextNode.parent.right != nextNode) {
-//					nextNode = minKeyTree(nextNode.parent.right);
-			        Node current;
-			        Node last = null;
-			        current = nextNode.parent.right;
-			        while(current != null) {
-			            last = current;
-			            current = current.left;
-			        }
-			        nextNode = last;
-				} 
-				else {
-					nextNode = nextNode.parent;
-				}
-			} else {
-			    nextNode = nextNode.parent;
-
-			}
-
+		    } else if (nextNode.parent.right == null || nextNode.parent.right == nextNode) {
+		        // else if nextNode's parent does not have a right node or nextNode's parent's
+		        // right node is nextNode, traverse up the tree by setting nextNode to nextNode.parent
+                nextNode = nextNode.parent;
+		    } else {
+		        // else move to the right of the tree by visiting a leaf node from the deepest level of
+		        // nextNode.parent.right's subtree, which means visiting nextNode.parent.right
+		        // if nextNode.parent.right is a leaf
+	            nextNode = getDeepLeftLeaf(nextNode.parent.right);		        
+		    }
+			
 			return key;
 		}
 	}
@@ -434,7 +417,7 @@ public class LinkedTree {
 		tree.insert(2, "5's left child");
 		tree.insert(8, "9's left child");
 		tree.insert(6, "5's right child");
-		tree.insert(4, "2's right child");
+        tree.insert(4, "2's right child");
 
 		System.out.print("\n preorder: ");
 		tree.preorderPrint();
@@ -498,12 +481,12 @@ public class LinkedTree {
 		System.out.println();
 
 		// testing PostOrderIterator
-//		postIter = tree.postorderIterator();
-//		System.out.print("Printing out using pre-order iterator: ");
-//		while (postIter.hasNext()) {
-//			System.out.print(postIter.next() + " ");
-//		}
-//		System.out.println();
+		postIter = tree.postorderIterator();
+		System.out.print("Printing out using post order iterator: ");
+		while (postIter.hasNext()) {
+			System.out.print(postIter.next() + " ");
+		}
+		System.out.println();
 
 		System.out.print("  inorder: ");
 		tree.inorderPrint();
