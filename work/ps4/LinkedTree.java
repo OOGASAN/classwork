@@ -287,8 +287,14 @@ public class LinkedTree {
 	 * *not* necessarily the root of the entire tree.
 	 */
 	private static void rangeSearchTree(Node root, int lower, int upper) {
-		/*** implement this method for PS 4 ***/
-
+	    if (lower > upper)
+	        return;
+	        
+	    Node node = searchTree(root, lower);
+	    lower = lower + 1;
+	    if (node != null)
+            System.out.print(node.key + " ");
+	    rangeSearchTree(root, lower, upper);    
 	}
 
 	/** Returns a preorder iterator for this tree. */
@@ -394,11 +400,11 @@ public class LinkedTree {
 			    nextNode = null;
 		    } else if (nextNode.parent.right == null || nextNode.parent.right == nextNode) {
 		        // else if nextNode's parent does not have a right node or nextNode's parent's
-		        // right node is nextNode, traverse up the tree by setting nextNode to nextNode.parent
+		        // right node is nextNode, move up the tree by setting nextNode to nextNode.parent
                 nextNode = nextNode.parent;
 		    } else {
 		        // else move to the right of the tree by visiting a leaf node from the deepest level of
-		        // nextNode.parent.right's subtree, which means visiting nextNode.parent.right
+		        // nextNode.parent.right's subtree,giving preference to left nodes, which means visiting nextNode.parent.right
 		        // if nextNode.parent.right is a leaf
 	            nextNode = getDeepLeftLeaf(nextNode.parent.right);		        
 		    }
@@ -494,7 +500,14 @@ public class LinkedTree {
 
 		// test numEvenKeys() method
 		System.out.println("Number of even keys in tree: " + tree.numEvenKeys());
-		
+
+        // test range search        
+        System.out.print("Lower limit for range search: ");
+        int lower = in.nextInt();	
+        System.out.print("Upper limit for range search: ");
+        int upper = in.nextInt();           
+		tree.rangeSearch(lower, upper);
+		System.out.println();
 
 	}
 }
