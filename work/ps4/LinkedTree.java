@@ -367,8 +367,9 @@ public class LinkedTree {
 		private Node nextNode;
 
 		private PostorderIterator() {
-			// The traversal starts with a leaf node.
-			Node trav = root;
+			// find a leaf node from the deepest level, giving preference to a left node
+		    // this will be the first node visited by the traversal
+		    Node trav = root;
 			Node trail = null;
 
 			while (trav != null) {
@@ -381,27 +382,42 @@ public class LinkedTree {
 					trav = null;
 			}
 
+			// set nextNode to the leaf node found above 
 			nextNode = trail;
 		}
 
 		public boolean hasNext() {
-			return (nextNode.parent != null);
-//			return (nextNode != null);
+			return (nextNode != null);
 		}
 
 		public int next() {
+            if (nextNode == null)
+                throw new NoSuchElementException();
+            
 			int key = nextNode.key;
 
-			if (nextNode.parent.right != null) {
+			if (nextNode.parent == null) {
+			    // if nextNode does not have a parent
+			    // we've reached the root of the tree, set nextNode to null
+			    nextNode = null;
+		    } else if (nextNode.parent.right != null) {
 				if (nextNode.parent.right != nextNode) {
-//					nextNode = nextNode.parent.right;
-					nextNode = minKeyTree(nextNode.parent.right);
+//					nextNode = minKeyTree(nextNode.parent.right);
+			        Node current;
+			        Node last = null;
+			        current = nextNode.parent.right;
+			        while(current != null) {
+			            last = current;
+			            current = current.left;
+			        }
+			        nextNode = last;
 				} 
 				else {
 					nextNode = nextNode.parent;
 				}
 			} else {
-				nextNode = nextNode.parent;	
+			    nextNode = nextNode.parent;
+
 			}
 
 			return key;
