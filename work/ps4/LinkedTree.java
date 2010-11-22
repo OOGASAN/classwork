@@ -255,16 +255,21 @@ public class LinkedTree {
 		/*** implement this method for PS 4 ***/
 		int numEvenKeys;
 
+		// initialize numEvenKeys based on whether current root is even
 		if (root.key % 2 == 0)
 			numEvenKeys = 1;
 		else
 			numEvenKeys = 0;
 
 		if (root.left != null)
+		    // add the number of even keys in the left subtree
 			numEvenKeys += numEvenKeysTree(root.left);
 		if (root.right != null)
+            // add the number of even keys in the right subtree		    
 			numEvenKeys += numEvenKeysTree(root.right);
 
+		// return the total number of even keys so far - eventually returns
+		// total in whole tree
 		return numEvenKeys;
 
 	}
@@ -287,14 +292,18 @@ public class LinkedTree {
 	 * *not* necessarily the root of the entire tree.
 	 */
 	private static void rangeSearchTree(Node root, int lower, int upper) {
+	    // if root has a left child, search root's left subtree
 	    if (root.left != null) {
 	        if (root.key > lower) 
 	           rangeSearchTree(root.left, lower, upper);	        
 	    }
 	    
+	    // print out the keys in between recursive calls to make sure keys are
+	    // printed out in ascending order - inorder traversal
 	    if (root.key >= lower && root.key <= upper)
 	        System.out.print(root.key + " ");
-	        
+
+        // if root has a right child, search root's right subtree	    
 	   if (root.right != null) {
 	       if (root.key < upper) 
 	           rangeSearchTree(root.right, lower, upper);
