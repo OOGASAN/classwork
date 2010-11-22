@@ -287,14 +287,18 @@ public class LinkedTree {
 	 * *not* necessarily the root of the entire tree.
 	 */
 	private static void rangeSearchTree(Node root, int lower, int upper) {
-	    if (lower > upper)
-	        return;
+	    if (root.left != null) {
+	        if (root.key > lower) 
+	           rangeSearchTree(root.left, lower, upper);	        
+	    }
+	    
+	    if (root.key >= lower && root.key <= upper)
+	        System.out.print(root.key + " ");
 	        
-	    Node node = searchTree(root, lower);
-	    lower = lower + 1;
-	    if (node != null)
-            System.out.print(node.key + " ");
-	    rangeSearchTree(root, lower, upper);    
+	   if (root.right != null) {
+	       if (root.key < upper) 
+	           rangeSearchTree(root.right, lower, upper);
+	   }
 	}
 
 	/** Returns a preorder iterator for this tree. */
