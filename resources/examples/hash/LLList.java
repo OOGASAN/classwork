@@ -119,20 +119,18 @@ public class LLList implements List {
 
     /**
      * toString - converts the list into a String of the form 
-     * {item0, item1, ...}
+     *      [ item0 item1 ... ]
      */
     public String toString() {
-	String str = "{";
+	String str = "[ ";
 
 	Node trav = head.next;    // skip over the dummy head node
 	while (trav != null) {
-	    str = str + trav.item;
-	    if (trav.next != null)
-		str = str + ", ";
+	    str += (trav.item + " ");
 	    trav = trav.next;
 	}
 
-	str = str + "}";
+	str += "]";
 	return str;
     }
 
