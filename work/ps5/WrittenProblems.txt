@@ -86,18 +86,55 @@ TODO: make trees just to be safe...
   
   
   
+==================================================================  
+TODO: show work
+2)
+a)
+
+1st state to compare is original state:
+
+475
+3_1
+628
   
+priority = -12  
   
+475
+31_
+628  
+
+priority = -11
+
+47_
+315
+628  
   
+priority = -10  
+
+
+
+
+b)
+1st state to compare is original state:
+
+475
+3_1
+628
   
+priority = -12   
   
+475
+31_
+628  
+
+priority = -12
+
+
+4_5
+371
+628
   
-  
-  
-  
-  
-  
-  
+priority = -12  
   
   
   
