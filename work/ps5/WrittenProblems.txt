@@ -99,12 +99,14 @@ a)
   
 priority = -12  
   
+2nd state:
 475
 31_
 628  
 
 priority = -11
 
+3rd state:
 47_
 315
 628  
@@ -123,6 +125,7 @@ b)
   
 priority = -12   
   
+2nd state:  
 475
 31_
 628  
@@ -130,6 +133,7 @@ priority = -12
 priority = -12
 
 
+3rd state:
 4_5
 371
 628
@@ -137,6 +141,46 @@ priority = -12
 priority = -12  
   
   
+3)
+TODO
+
+4)
+TODO
+
+5)
+TODO: show work
+a)
+Atlanta, St. Louis, Washington, Denver, New York, Boston, LA, Seattle
+
+b)
+Atlanta -> St. Lous -> Boston
+
+c)
+Atlanta, St. Louis, Washington, New York, Boston, Denver, LA, Seattle
+
+d)
+Atlanta -> St. Louis -> Washington -> New York -> Boston
+
+
+6)
+TODO: show work
+
+(Atlanta, St. Louis)
+(Atlanta, Washington)
+(Washington, New York)
+(New York, Boston)
+(St. Louis, Denver)
+(Denver, LA)
+(LA, Seattle)
+
+
+
+
+
+
+
+
+
   
   
   
