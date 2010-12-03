@@ -2,19 +2,19 @@ ps 5 schedule
 
 
 		S	M	T	W 	Th	F	S	S	M 	T
-WP1		-
+WP1		X
 
-WP2		- 		 
+WP2		X 		 
 
-WP3			-					
+WP3									-	
 
-WP4		 	-					
+WP4		 					-	
 
-WP5				-					
+WP5				X					
 
-WP6						-				
+WP6						X				
 
-WP7								   	 
+WP7							-	   	 
 
 PP8								-				
 
