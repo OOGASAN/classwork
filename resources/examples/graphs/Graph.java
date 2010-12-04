@@ -447,6 +447,26 @@ public class Graph {
 
         return true;
     }
+    
+    public boolean isAdjacent(String vertexAID, String vertexBID) {
+        return isAdjac(getVertex(vertexAID), getVertex(vertexBID));
+    }
+    
+    private static boolean isAdjac(Vertex a, Vertex b){
+        boolean isadjacent = false;
+        
+        Edge e = a.edges;
+        
+        while (e != null){
+            if (e.end.id == b.id) {
+                isadjacent = true;
+                break;
+            }
+            e = e.next;
+        }
+        
+        return isadjacent;
+    }
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -470,5 +490,9 @@ public class Graph {
 
         System.out.println("Prim's algorithm from " + start + ":");
         g.prim(start);
+        
+        System.out.println(g.isAdjacent("NewYork", "Providence"));        
+        System.out.println(g.isAdjacent("NewYork", "Portland"));
+
     }
 }

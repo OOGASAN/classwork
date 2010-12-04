@@ -140,12 +140,17 @@ priority = -12
   
 priority = -12  
   
+==================================================================  
   
 3)
 TODO
 
+==================================================================  
+
 4)
 TODO
+
+==================================================================  
 
 5)
 TODO: show work
@@ -161,6 +166,7 @@ Atlanta, St. Louis, Washington, New York, Boston, Denver, LA, Seattle
 d)
 Atlanta -> St. Louis -> Washington -> New York -> Boston
 
+==================================================================  
 
 6)
 TODO: show work
@@ -173,6 +179,7 @@ TODO: show work
 (Denver, LA)
 (LA, Seattle)
 
+==================================================================  
 
 7)
 a)
@@ -191,6 +198,91 @@ Washington 	inf.	650	  	[650]
 b)
 Atlanta -> St. Louis -> Boston
 Atlanta ->Washington -> New York -> Boston
+
+==================================================================  
+
+8)
+a)
+// method to check whether vertex a and vertex b are adjacent
+private static boolean isAdjacent(Vertex a, Vertex b){
+    boolean isadjacent = false;
+    
+    Edge e = a.edges;
+    
+    // step through the linked list representing edges that connect to vertex a
+    // and return true if one of these edges connects to vertex b
+    while (e != null){
+        if (e.end.id == b.id) {
+            isadjacent = true;
+            break;
+        }
+        e = e.next;
+    }
+    
+    return isadjacent;
+}
+
+b)
+The worst case scenario for a graph with n vertices implemented using our Graph class
+would be if all n vertices were connected to vertex a from the method above, and the edge 
+referencing the connection from vertex a to vertex b was the last element of a's edges 
+linked list.  This would run in O(n), or linear time, because a's linked list of edges would
+grow linearly in relation to n.
+
+
+c)
+If our Graph class used an adjacency matrix instead of a linked list of linked lists, we could determine
+if two vertices are adjacent simply by evaluating edge[a][b] and if edge[a][b] returns a valid cost,
+the two vertices are adjacent.  This could be done in O(1), or constant, time.
+
+
+==================================================================  
+
+9)
+a)
+{(b,c), (c,d), (d,b)}, {(c,d),(d,f),(f,c)}
+
+b)
+reverse (c,d) to (d,c)
+
+c)
+d,f,b,c,a,e
+
+d,b,f,c,a,e
+
+
+
+==================================================================  
+
+10)
+a) adjacency matrix - Because there are four edges for every vertex, this is a dense graph.  The cost of building
+the matrix will be less then the cost of maintaining links in an adjacency list.
+
+b)adjacency list - Because this is a less dense graph, it is better to use a list, and avoid the extra space 
+that an adjacency matrix requires
+
+c) adjacency matrix - Lookup time for adjacent vertexes is much faster with an adjacency matrix: O(1) 
+as opposed to O(n) as shown in question 8.  Especially if space is not important, an adjacency matrix is the
+way to go.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
