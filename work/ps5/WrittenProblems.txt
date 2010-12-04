@@ -174,10 +174,23 @@ TODO: show work
 (LA, Seattle)
 
 
+7)
+a)
+[x] = finalized
+
+Atlanta		[0]				
+Boston		inf.	inf.	1500	1500	[1100]
+Devner		inf.	inf.	1290	1290	1290	[1290]
+LA			inf.	inf.	inf.	inf.	inf.			1590	[1590]
+New York	inf.	inf.	1400	[900]	
+St. Louis	inf.	[500]			
+Seattle		inf.	inf.	inf.	inf.	inf.			[1390]	
+Washington 	inf.	650	  	[650] 
 
 
-
-
+b)
+Atlanta -> St. Louis -> Boston
+Atlanta ->Washington -> New York -> Boston
 
 
 
