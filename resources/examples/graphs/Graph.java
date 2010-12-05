@@ -491,6 +491,7 @@ public class Graph {
         System.out.println("Prim's algorithm from " + start + ":");
         g.prim(start);
         
+        // testing my isAdjacent method
         System.out.println(g.isAdjacent("NewYork", "Providence"));        
         System.out.println(g.isAdjacent("NewYork", "Portland"));
 

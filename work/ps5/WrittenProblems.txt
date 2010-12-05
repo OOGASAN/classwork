@@ -148,7 +148,45 @@ TODO
 ==================================================================  
 
 4)
-TODO
+
+a)
+"by"
+
+0 |
+1 |
+2 | "my"
+3 | "the"
+4 |
+5 |
+6 | "an"
+7 |
+
+the (h = 3) try: 3 open
+my (h = 2) try: 2 open
+an (h = 2) try: 2, 2 + 1 = 3, 2 + 4 = 6 open
+by (h = 2) try: 2, 2 + 1 = 3, 2 + 4 = 6, 
+				(2 + 9) % 8 = 11 % 8 = 3,
+				(2 + 16) % 8 = 2, 
+				(2+ 25) % 8 = 27 % 8 = 3,
+				(2 + 36) % 8 = 38 % 8 = 6,
+				(2 + 49) % 8 = 51 % 8 = 3,
+				(2 + 64) % 8 = 66 % 8 =2,
+				etc...
+
+b)
+"if"
+
+0 | 
+1 |
+2 | "my"
+3 | "the"
+4 | "do"
+5 | "an"
+6 | "by"
+7 | "we"
+
+the (h1 = 3, h2 = 3) try: 3 open
+my (h1 = 2,  
 
 ==================================================================  
 
@@ -263,10 +301,21 @@ that an adjacency matrix requires
 
 c) adjacency matrix - Lookup time for adjacent vertexes is much faster with an adjacency matrix: O(1) 
 as opposed to O(n) as shown in question 8.  Especially if space is not important, an adjacency matrix is the
-way to go.
+way to go.  
 
 
+==================================================================  
 
+11)
+For this application it is better to use a balanced search tree. 
+To simply retreive a product by name, a hash table would be better because it would run in O(1) time, whereas a 
+balanced search tree will run in O(log n).  However, for the operation of specifying the first n characters of a
+product name and retreiving all records that begin with those characters, a balanced search tree would be better.  
+This operation is basically a range search, which is easier to do with a balanced search tree.  Also, the specifiec 
+time requirements for retrieval of 20 operation per one million records are within the capabilities of a balanced 
+search tree, which searches in O(log n) time.  Another reason for choosing the balanced search tree is the requirement
+to add large sets of new records.  This will be faster with a balanced search tree which can add records in O(log n)
+time, while a hash table can be slowed to O(m) or O(n) time for insertion in worst case scenarios.
 
 
 
