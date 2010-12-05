@@ -306,8 +306,29 @@ time, while a hash table can be slowed to O(m) or O(n) time for insertion in wor
 
 
 
+12)
+(1, 8)
+(8, 2)
+(8, 5)
+(5, 3)
+(5, 4)
+(2, 6)
+(6, 7)
+
+To find the bridges to build with minimal construction cost, I used Prim's algorithm.  Because we are concerned with
+keeping the total cost of the edges to a minimum, this is the appropriate algorithm.
+The unconnected islands must be represented as vertices in a complete graph, with the costs of edges being the distance between each island.  Then Prim's can be used to determine the minimum spanning tree, which will give the cheapest way to build the bridges.
 
 
+
+13)
+(Boston, New York)
+(New York, Washington)
+(Atlanta, St. Louis)
+(Atlanta, Washingont)
+(St. Louis, Denver)
+(Denver, LA)
+(LA, Seattle)
 
 
 
