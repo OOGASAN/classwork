@@ -4,9 +4,6 @@ Problem Set 5 Written Problems
 
 1)
 a)
-sift down starting with the parent of the rightmost node in the lowest occupied level of the tree,
-as in Heap.makeHeap()
-
 sift down 20:
 
                           12
@@ -343,6 +340,7 @@ to add large sets of new records.  This will be faster with a balanced search tr
 time, while a hash table can be slowed to O(m) or O(n) time for insertion in worst case scenarios.
 
 
+==================================================================  
 
 12)
 (1, 8)
@@ -358,6 +356,7 @@ keeping the total cost of the edges to a minimum, this is the appropriate algori
 The unconnected islands must be represented as vertices in a complete graph, with the costs of edges being the distance between each island.  Then Prim's can be used to determine the minimum spanning tree, which will give the cheapest way to build the bridges.
 
 
+==================================================================  
 
 13)
 (Boston, New York)
