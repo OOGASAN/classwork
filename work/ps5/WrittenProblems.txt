@@ -1,4 +1,7 @@
-TODO: check for tabs vs. spaces
+Sam Tymorek
+samtymorek@hotmail.com
+Problem Set 5 Written Problems
+
 1)
 a)
 sift down starting with the parent of the rightmost node in the lowest occupied level of the tree,
@@ -68,7 +71,6 @@ b)
   
   
 c)
-TODO: make trees just to be safe...
 
   | 35 | 33 | 26 | 20 | 21 | 12 | 15 | 40 |
   
@@ -87,7 +89,6 @@ TODO: make trees just to be safe...
   
   
 ==================================================================  
-TODO: show work
 2)
 a)
 
@@ -178,7 +179,6 @@ b)
 ==================================================================  
 
 5)
-TODO: show work
 a)
 Atlanta, St. Louis, Washington, Denver, New York, Boston, LA, Seattle
 
@@ -194,8 +194,6 @@ Atlanta -> St. Louis -> Washington -> New York -> Boston
 ==================================================================  
 
 6)
-TODO: show work
-
 (Atlanta, St. Louis)
 (Atlanta, Washington)
 (Washington, New York)
