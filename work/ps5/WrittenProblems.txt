@@ -143,7 +143,47 @@ priority = -12
 ==================================================================  
   
 3)
-TODO
+a)
+
+// psuedocode for a binary search tree based priority queue
+// uses key as priorities
+class TreeBasedPQueue:
+	Tree t
+	
+	public insert():
+		t.insert()
+		
+	public remove():
+		// call new method that returns the node in the tree whose key has the greatest value
+		Node temp =  t.maxNode()	
+		t.delete(temp.key)
+		return temp
+		
+		
+// method to add to class LinkedTree that returns the node in the tree whose key is of
+// the largest value
+class LinkedTree
+	…
+	public Node maxNode():
+		return maxNodeTree(root);
+		
+	private Node maxNodeTree(Node root):
+		Node current, last
+		current = root
+		while (current != null): 
+			last = current;
+			current = current.right	
+				
+		return last
+		
+		
+The worst case efficiency of this implementation is O(n) because if the items are inserted
+in order, the resulting tree will have a depth of n.
+
+b)
+If we have a reference to the node with the highest priority, we can set a reference to that node's parent, then delete
+it, then make the parent node the new node with highest priority.  This can be done in O(1) time.		 	
+
 
 ==================================================================  
 
